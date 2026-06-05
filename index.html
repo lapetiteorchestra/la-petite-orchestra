@@ -6,8 +6,9 @@
     <title>La Petite Orchestra | Agencia de Comunicación</title>
     <!-- Tailwind CSS v4 CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- Alpine.js para Modales interactivos -->
+    <!-- Alpine.js para Modales -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap');
         
@@ -20,61 +21,101 @@
         h1, h2, h3, h4, .font-display {
             font-family: 'Syne', sans-serif;
         }
-        .pop-in-transition {
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
         [x-cloak] { display: none !important; }
+
+        /* CONTROL DE ESCALA Y CENTRADO */
+        .hero-title {
+            /* Mínimo: 26px (Mobile), Fluido: 7.5vw, Máximo: 74px (Desktop) */
+            font-size: clamp(26px, 7.5vw, 74px) !important;
+            line-height: 1.1 !important;
+            letter-spacing: -0.04em !important;
+            width: 100%;
+        }
+
+        .hero-title .no-split {
+            display: block;
+            white-space: nowrap !important;
+            width: fit-content;
+        }
+
+        /* ANIMACIÓN DE GRADIENTE FLUIDO */
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .animated-gradient {
+            background-size: 200% auto;
+            animation: gradientMove 6s linear infinite;
+        }
+
+        /* ANIMACIÓN PULSO SUAVE PARA EL BADGE */
+        @keyframes softPulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.03); opacity: 0.9; }
+        }
+        .badge-pulse {
+            animation: softPulse 3s ease-in-out infinite;
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-teal-400 selection:text-black">
 
-    <!-- NAVBAR RESPONSIVE CON LINK CORRECTO A LPO Logo_2.png -->
+    <!-- NAVBAR RESPONSIVE -->
     <nav class="sticky top-0 z-40 w-full bg-black/90 backdrop-blur-md border-b-2 border-zinc-900 px-4 md:px-6 py-3">
         <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
             <a href="#" class="flex items-center gap-3 group min-w-0">
-                <!-- Contenedor del Nuevo Logo -->
-                <div class="h-12 w-12 md:h-14 md:w-14 bg-white p-1.5 rounded-sm flex-shrink-0 flex items-center justify-center border border-black shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] group-hover:shadow-[4px_4px_0px_0px_#2dd4bf] transition-all">
-                    <img src="LPO Logo_2.png" alt="LPO Logo" class="h-full w-full object-contain">
+                <!-- Contenedor del Logo (Corregido a LPO Logo_2.png) -->
+                <div class="bg-white p-1.5 rounded-sm flex-shrink-0 flex items-center justify-center border border-black shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] group-hover:shadow-[4px_4px_0px_0px_#2dd4bf] transition-all" 
+                     style="width: 45px; height: 45px; min-width: 45px; min-height: 45px; display: flex !important;">
+                    <img src="LPO Logo_2.png" alt="LPO Logo_2.png" style="width: 100%; height: 100%; object-fit: contain; display: block;">
                 </div>
-                <span class="text-lg md:text-2xl font-extrabold tracking-tighter text-white group-hover:text-teal-400 transition-colors truncate">
+                <span class="text-sm md:text-2xl font-extrabold tracking-tighter text-white group-hover:text-teal-400 transition-colors truncate">
                     LA PETITE ORCHESTRA
                 </span>
             </a>
             <div class="flex-shrink-0">
-                <a href="#contacto" class="text-xs md:text-sm px-4 py-2 bg-orange-500 text-white font-bold uppercase tracking-wider rounded-sm hover:bg-teal-400 hover:text-black transition-all shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]">
+                <a href="#contacto" class="text-[10px] md:text-sm px-3 py-1.5 md:px-4 md:py-2 bg-orange-500 text-white font-bold uppercase tracking-wider rounded-sm hover:bg-teal-400 hover:text-black transition-all shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]">
                     Contacto
                 </a>
             </div>
         </div>
     </nav>
 
-    <!-- HERO SECTION ARREGLADA (100% centrada y ultra-responsive en celulares) -->
-    <header class="relative bg-black min-h-[70vh] flex flex-col items-center justify-center px-4 py-12 border-b-2 border-zinc-900 w-full">
+    <!-- HERO SECTION -->
+    <header class="relative bg-black min-h-[80vh] flex items-center justify-center px-4 py-12 border-b-2 border-zinc-900 w-full overflow-hidden">
         <div class="w-full max-w-4xl mx-auto flex flex-col items-center justify-center text-center">
-            <span class="inline-block bg-zinc-950 text-teal-400 border border-teal-950/50 text-[10px] md:text-xs font-bold tracking-widest uppercase px-4 py-1.5 mb-6 rounded-full mx-auto">
-                Creative Marketing & Communication
+            
+            <!-- Badge Animado -->
+            <span class="badge-pulse inline-block bg-zinc-950 text-teal-400 border border-teal-900 text-[9px] md:text-xs font-bold tracking-widest uppercase px-3 py-1.5 mb-6 md:mb-8 rounded-full max-w-full truncate">
+                ⚡ Creative Marketing & Communication
             </span>
             
-            <!-- Tipografía corregida: Escala perfectamente desde text-4xl en celus chicos hasta text-8xl en monitores -->
-            <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none text-white uppercase mb-6 text-center w-full break-keep">
-                ORQUESTAMOS <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-orange-400 to-teal-400">AUDIENCIAS</span>
+            <!-- Título Principal con Centrado Simétrico Absoluto -->
+            <h1 class="hero-title font-black text-white uppercase mb-6 md:mb-8 flex flex-col items-center justify-center px-4">
+                <span class="no-split">ORQUESTAMOS</span>
+                <span class="no-split animated-gradient text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-teal-400 to-orange-500">
+                    AUDIENCIAS
+                </span>
             </h1>
             
-            <p class="text-sm sm:text-base md:text-xl text-zinc-400 max-w-2xl mx-auto font-light leading-relaxed mb-8 text-center block">
+            <!-- Bajada de texto -->
+            <p class="text-xs sm:text-base md:text-lg lg:text-xl text-zinc-400 max-w-2xl mx-auto font-light leading-relaxed mb-8 md:mb-10 block px-4">
                 Diseñamos estrategias de contenido, productos editoriales y pauta digital de alta fidelidad para marcas que exigen impacto real.
             </p>
-            <a href="#servicios" class="inline-block text-sm md:text-base font-bold bg-white text-black px-6 py-3.5 md:px-8 md:py-4 uppercase tracking-wider rounded-none border-2 border-black shadow-[4px_4px_0px_0px_#2dd4bf] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all mx-auto">
+            
+            <!-- Botón de Acción -->
+            <a href="#servicios" class="inline-block text-xs md:text-base font-bold bg-white text-black px-5 py-3 md:px-8 md:py-4 uppercase tracking-wider rounded-none border-2 border-black shadow-[4px_4px_0px_0px_#2dd4bf] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all">
                 Ver Servicios ↓
             </a>
         </div>
     </header>
 
     <!-- SECCIÓN SERVICIOS -->
-    <section id="servicios" class="bg-zinc-950 py-16 px-4 md:px-6" x-data="{ openModal: null }">
+    <section id="servicios" class="bg-zinc-950 py-20 px-4 md:px-6" x-data="{ openModal: null }">
         <div class="max-w-7xl mx-auto">
             
-            <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 border-b-2 border-zinc-900 pb-6 gap-4">
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-16 border-b-2 border-zinc-900 pb-8 gap-4">
                 <div class="text-left">
                     <span class="text-orange-500 text-xs md:text-sm font-bold tracking-widest uppercase block mb-2">// QUÉ HACEMOS</span>
                     <h2 class="text-3xl md:text-6xl font-black uppercase tracking-tight text-white">NUESTROS SERVICIOS</h2>
@@ -87,43 +128,43 @@
             </div>
 
             <!-- CARDS DE SERVICIO -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 
                 <!-- Card 1 -->
-                <div @click="openModal = 1" class="group bg-black border-2 border-zinc-800 p-6 md:p-8 flex items-center justify-between cursor-pointer hover:border-teal-400 hover:bg-zinc-900/40 pop-in-transition shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_#2dd4bf]">
-                    <h3 class="text-xl md:text-2xl lg:text-3xl font-bold uppercase tracking-tight text-white group-hover:text-teal-400 pop-in-transition text-left pr-4">
+                <div @click="openModal = 1" class="group bg-black border-2 border-zinc-800 p-6 md:p-8 flex items-center justify-between cursor-pointer hover:border-teal-400 hover:bg-zinc-900/30 transition-all duration-300 transform hover:-translate-y-1.5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_#2dd4bf]">
+                    <h3 class="text-xl md:text-2xl lg:text-3xl font-bold uppercase tracking-tight text-white group-hover:text-teal-400 transition-colors text-left pr-4">
                         Estrategia de Newsletters & Audiencias
                     </h3>
-                    <span class="text-xl md:text-2xl text-zinc-700 group-hover:text-teal-400 font-black flex-shrink-0 pop-in-transition">→</span>
+                    <span class="text-xl md:text-2xl text-zinc-700 group-hover:text-teal-400 font-black flex-shrink-0 transition-transform group-hover:translate-x-1">→</span>
                 </div>
 
                 <!-- Card 2 -->
-                <div @click="openModal = 2" class="group bg-black border-2 border-zinc-800 p-6 md:p-8 flex items-center justify-between cursor-pointer hover:border-orange-500 hover:bg-zinc-900/40 pop-in-transition shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_#f97316]">
-                    <h3 class="text-xl md:text-2xl lg:text-3xl font-bold uppercase tracking-tight text-white group-hover:text-orange-400 pop-in-transition text-left pr-4">
+                <div @click="openModal = 2" class="group bg-black border-2 border-zinc-800 p-6 md:p-8 flex items-center justify-between cursor-pointer hover:border-orange-500 hover:bg-zinc-900/30 transition-all duration-300 transform hover:-translate-y-1.5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_#f97316]">
+                    <h3 class="text-xl md:text-2xl lg:text-3xl font-bold uppercase tracking-tight text-white group-hover:text-orange-400 transition-colors text-left pr-4">
                         Contenidos & Producción Audiovisual
                     </h3>
-                    <span class="text-xl md:text-2xl text-zinc-700 group-hover:text-orange-400 font-black flex-shrink-0 pop-in-transition">→</span>
+                    <span class="text-xl md:text-2xl text-zinc-707 group-hover:text-orange-400 font-black flex-shrink-0 transition-transform group-hover:translate-x-1">→</span>
                 </div>
 
                 <!-- Card 3 -->
-                <div @click="openModal = 3" class="group bg-black border-2 border-zinc-800 p-6 md:p-8 flex items-center justify-between cursor-pointer hover:border-orange-500 hover:bg-zinc-900/40 pop-in-transition shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_#f97316]">
-                    <h3 class="text-xl md:text-2xl lg:text-3xl font-bold uppercase tracking-tight text-white group-hover:text-orange-400 pop-in-transition text-left pr-4">
+                <div @click="openModal = 3" class="group bg-black border-2 border-zinc-800 p-6 md:p-8 flex items-center justify-between cursor-pointer hover:border-orange-500 hover:bg-zinc-900/30 transition-all duration-300 transform hover:-translate-y-1.5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_#f97316]">
+                    <h3 class="text-xl md:text-2xl lg:text-3xl font-bold uppercase tracking-tight text-white group-hover:text-orange-400 transition-colors text-left pr-4">
                         Promoción Digital & Campañas (Paid)
                     </h3>
-                    <span class="text-xl md:text-2xl text-zinc-700 group-hover:text-orange-400 font-black flex-shrink-0 pop-in-transition">→</span>
+                    <span class="text-xl md:text-2xl text-zinc-707 group-hover:text-orange-400 font-black flex-shrink-0 transition-transform group-hover:translate-x-1">→</span>
                 </div>
 
                 <!-- Card 4 -->
-                <div @click="openModal = 4" class="group bg-black border-2 border-zinc-800 p-6 md:p-8 flex items-center justify-between cursor-pointer hover:border-teal-400 hover:bg-zinc-900/40 pop-in-transition shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_#2dd4bf]">
-                    <h3 class="text-xl md:text-2xl lg:text-3xl font-bold uppercase tracking-tight text-white group-hover:text-teal-400 pop-in-transition text-left pr-4">
+                <div @click="openModal = 4" class="group bg-black border-2 border-zinc-800 p-6 md:p-8 flex items-center justify-between cursor-pointer hover:border-teal-400 hover:bg-zinc-900/30 transition-all duration-300 transform hover:-translate-y-1.5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_#2dd4bf]">
+                    <h3 class="text-xl md:text-2xl lg:text-3xl font-bold uppercase tracking-tight text-white group-hover:text-teal-400 transition-colors text-left pr-4">
                         Data, Analítica & Reportes de Negocio
                     </h3>
-                    <span class="text-xl md:text-2xl text-zinc-700 group-hover:text-teal-400 font-black flex-shrink-0 pop-in-transition">→</span>
+                    <span class="text-xl md:text-2xl text-zinc-707 group-hover:text-teal-400 font-black flex-shrink-0 transition-transform group-hover:translate-x-1">→</span>
                 </div>
 
             </div>
 
-            <!-- POP-INS (MODALES) INTERACTIVOS -->
+            <!-- MODALES INTERACTIVOS MEJORADOS CON BULLETS -->
             <template x-teleport="body">
                 <div x-show="openModal !== null" 
                      class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm"
@@ -149,36 +190,87 @@
                             <button @click="openModal = null" class="text-zinc-400 hover:text-white text-3xl font-bold leading-none">&times;</button>
                         </div>
 
-                        <!-- Contenidos -->
-                        <div x-show="openModal === 1" class="space-y-4">
+                        <!-- Contenido 1 (Newsletters) -->
+                        <div x-show="openModal === 1" class="space-y-6">
                             <h4 class="text-2xl md:text-3xl font-black uppercase text-white tracking-tight">Estrategia de Newsletters & Audiencias</h4>
-                            <p class="text-zinc-300 text-sm md:text-lg leading-relaxed">
-                                Diseñamos, implementamos y optimizamos canales de email marketing desde cero o potenciamos tus newsletters actuales (como tus casos de éxito en <strong>QuePasa</strong> y <strong>Tierra Viva</strong>). Nos enfocamos en la curaduría editorial, el diseño de plantillas custom de alto impacto y la mejora analítica de tus tasas de apertura, clics y engagement para construir audiencias fieles, monetizables y activas sin depender de los algoritmos de las redes sociales.
-                            </p>
+                            <ul class="space-y-3.5 text-zinc-300 text-sm md:text-base">
+                                <li class="flex items-start gap-3">
+                                    <span class="text-teal-400 font-bold mt-0.5">✦</span>
+                                    <span><strong>Independencia algorítmica:</strong> Creamos canales de comunicación directos para construir comunidades fieles y monetizables.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-teal-400 font-bold mt-0.5">✦</span>
+                                    <span><strong>Casos de éxito comprobados:</strong> Potenciamos estrategias editoriales basadas en experiencias reales como <em>QuePasa</em> y <em>Tierra Viva</em>.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-teal-400 font-bold mt-0.5">✦</span>
+                                    <span><strong>Curaduría y Diseño Custom:</strong> Maquetamos plantillas exclusivas de alta fidelidad técnica visual que maximizan la experiencia de lectura.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-teal-400 font-bold mt-0.5">✦</span>
+                                    <span><strong>Optimización de Conversión:</strong> Monitoreamos y mejoramos activamente tus tasas de apertura (OR), clics (CTR) y engagement general.</span>
+                                </li>
+                            </ul>
                         </div>
 
-                        <div x-show="openModal === 2" class="space-y-4">
+                        <!-- Contenido 2 (Audiovisual) -->
+                        <div x-show="openModal === 2" class="space-y-6">
                             <h4 class="text-2xl md:text-3xl font-black uppercase text-white tracking-tight">Contenidos & Producción Audiovisual</h4>
-                            <p class="text-zinc-300 text-sm md:text-lg leading-relaxed">
-                                Creamos piezas comunicacionales icónicas que detienen el scroll por completo. Desarrollamos desde el diseño estratégico de avisos publicitarios institucionales y piezas gráficas complejas para redes, hasta la producción integral de videos (guion, filmación y postproducción) adaptados a los formatos verticales dinámicos que las audiencias devoran hoy. Identidad visual y narrativa premium puestas al servicio de tu marca.
-                            </p>
+                            <ul class="space-y-3.5 text-zinc-300 text-sm md:text-base">
+                                <li class="flex items-start gap-3">
+                                    <span class="text-orange-500 font-bold mt-0.5">✦</span>
+                                    <span><strong>Retención de Scroll:</strong> Desarrollamos piezas visuales icónicas diseñadas específicamente para captar la atención en segundos.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-orange-500 font-bold mt-0.5">✦</span>
+                                    <span><strong>Formatos Orgánicos y Dinámicos:</strong> Producción integral de video vertical y narrativas optimizadas para las plataformas actuales.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-orange-500 font-bold mt-0.5">✦</span>
+                                    <span><strong>Avisos Editoriales e Institucionales:</strong> Diseño de anuncios de alto nivel estético alineados a la identidad de marcas premium.</span>
+                                </li>
+                            </ul>
                         </div>
 
-                        <div x-show="openModal === 3" class="space-y-4">
+                        <!-- Contenido 3 (Paid Media) -->
+                        <div x-show="openModal === 3" class="space-y-6">
                             <h4 class="text-2xl md:text-3xl font-black uppercase text-white tracking-tight">Promoción Digital & Campañas (Paid)</h4>
-                            <p class="text-zinc-300 text-sm md:text-lg leading-relaxed">
-                                Llevamos tu mensaje directo a las personas indicadas para escalar tu negocio. Auditamos tus estructuras publicitarias actuales en Paid Media (Meta Ads, Google Ads, TikTok Ads) y diseñamos nuevas estrategias de pauta digital ultra segmentadas y orientadas a performance. Maximizamos el rendimiento de tu presupuesto para acelerar el alcance, la conversión y el retorno de inversión real.
-                            </p>
+                            <ul class="space-y-3.5 text-zinc-300 text-sm md:text-base">
+                                <li class="flex items-start gap-3">
+                                    <span class="text-orange-500 font-bold mt-0.5">✦</span>
+                                    <span><strong>Ecosistema Multiplataforma:</strong> Planificación estratégica en Meta Ads, Google Ads y TikTok Ads.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-orange-500 font-bold mt-0.5">✦</span>
+                                    <span><strong>Auditoría de Estructuras:</strong> Analizamos tus cuentas publicitarias actuales para eliminar fugas de presupuesto.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-orange-500 font-bold mt-0.5">✦</span>
+                                    <span><strong>Enfoque en Performance:</strong> Campañas ultra segmentadas orientadas a acelerar conversiones, alcance y retorno real (ROI).</span>
+                                </li>
+                            </ul>
                         </div>
 
-                        <div x-show="openModal === 4" class="space-y-4">
+                        <!-- Contenido 4 (Data & Analítica) -->
+                        <div x-show="openModal === 4" class="space-y-6">
                             <h4 class="text-2xl md:text-3xl font-black uppercase text-white tracking-tight">Data, Analítica & Reportes de Negocio</h4>
-                            <p class="text-zinc-300 text-sm md:text-lg leading-relaxed">
-                                Lo que no se mide, no se puede escalar. Realizamos un tracking minucioso de las métricas clave de todo tu ecosistema digital (newsletters, campañas de pauta y contenidos orgánicos). Traducimos datos áridos y complejos en reportes mensuales ejecutivos, claros y completamente accionables que sirven de brújula analítica para la toma de decisiones comerciales y creativas.
-                            </p>
+                            <ul class="space-y-3.5 text-zinc-300 text-sm md:text-base">
+                                <li class="flex items-start gap-3">
+                                    <span class="text-teal-400 font-bold mt-0.5">✦</span>
+                                    <span><strong>Tracking de Ecosistema:</strong> Medición centralizada de tus newsletters, pauta digital y rendimiento orgánico.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-teal-400 font-bold mt-0.5">✦</span>
+                                    <span><strong>Traducción de Datos:</strong> Convertimos métricas técnicas complejas en paneles ejecutivos sencillos y transparentes.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-teal-400 font-bold mt-0.5">✦</span>
+                                    <span><strong>Brújula de Decisiones:</strong> Reportes mensuales 100% accionables para guiar tus próximos pasos comerciales y creativos.</span>
+                                </li>
+                            </ul>
                         </div>
 
-                        <button @click="openModal = null" class="mt-6 w-full bg-white text-black font-bold uppercase py-3 border border-black tracking-wider hover:bg-teal-400 transition-colors text-sm md:text-base">
+                        <button @click="openModal = null" class="mt-8 w-full bg-white text-black font-bold uppercase py-3 border border-black tracking-wider hover:bg-teal-400 transition-colors text-sm md:text-base">
                             Cerrar Ventana
                         </button>
                     </div>
@@ -189,7 +281,7 @@
     </section>
 
     <!-- SECCIÓN CONTACTO -->
-    <section id="contacto" class="bg-black py-16 px-4 md:px-6 border-t-2 border-zinc-900">
+    <section id="contacto" class="bg-black py-20 px-4 md:px-6 border-t-2 border-zinc-900">
         <div class="max-w-3xl mx-auto text-center flex flex-col items-center justify-center">
             <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tight text-white mb-4">¿HACEMOS ALGO JUNTOS?</h2>
             <p class="text-zinc-400 text-base md:text-lg mb-8 max-w-lg mx-auto">
