@@ -3,8 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Petite Orchestra | Creative Marketing & Communication Agency</title>
-    <link rel="icon" type="image/png" href="LPO Logo_2.png">
+    <title>La Petite Orchestra | Content, Paid Media & Analytics</title>
+    <meta name="description" content="La Petite Orchestra helps brands grow through content strategy, paid media, audience development and actionable analytics. Book a strategy call.">
+    <link rel="canonical" href="https://lapetiteorchestra.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lapetiteorchestra.com/">
+    <meta property="og:title" content="La Petite Orchestra | Content, Paid Media & Analytics">
+    <meta property="og:description" content="We orchestrate audiences through premium content, paid media and data-driven strategy.">
+    <meta property="og:image" content="https://lapetiteorchestra.com/lpo-logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="La Petite Orchestra | Content, Paid Media & Analytics">
+    <meta name="twitter:description" content="We orchestrate audiences through premium content, paid media and data-driven strategy.">
+    <meta name="theme-color" content="#080d0c">
+    <link rel="icon" type="image/png" href="lpo-logo.png">
     <!-- Tailwind CSS v4 CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- Alpine.js para Modales e Idioma -->
@@ -20,7 +31,6 @@
   gtag('config', 'G-ST3N6WPY8C');
 </script>
 
-    <style>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap');
         
@@ -69,35 +79,69 @@
         .badge-pulse {
             animation: softPulse 3s ease-in-out infinite;
         }
+
+        html { scroll-behavior: smooth; }
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        .logo-lockup {
+            width: clamp(180px, 23vw, 310px);
+            height: 54px;
+            object-fit: contain;
+            object-position: left center;
+        }
+        .eyebrow {
+            font-size: 0.72rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+        .section-kicker {
+            color: #f97316;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+        }
+        .focus-ring:focus-visible {
+            outline: 3px solid #2dd4bf;
+            outline-offset: 4px;
+        }
+        @media (max-width: 640px) {
+            .logo-lockup { width: 178px; height: 44px; }
+        }
     </style>
 </head>
-<body class="antialiased selection:bg-teal-400 selection:text-black" x-data="{ lang: 'en', openModal: null }">
+<body class="antialiased selection:bg-teal-400 selection:text-black"
+      x-data="{ lang: localStorage.getItem('lpoLang') || 'en', openModal: null }"
+      x-init="$watch('lang', value => localStorage.setItem('lpoLang', value))">
 
     <!-- NAVBAR RESPONSIVE -->
     <nav class="sticky top-0 z-40 w-full bg-black/90 backdrop-blur-md border-b-2 border-zinc-900 px-4 md:px-6 py-3">
         <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
-            <a href="#" class="flex items-center gap-3 group min-w-0">
-                <!-- Contenedor del Logo -->
-                <div class="bg-white p-1.5 rounded-sm flex-shrink-0 flex items-center justify-center border border-black shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] group-hover:shadow-[4px_4px_0px_0px_#2dd4bf] transition-all" 
-                     style="width: 45px; height: 45px; min-width: 45px; min-height: 45px; display: flex !important;">
-                    <img src="LPO Logo_2.png" alt="LPO Logo_2.png" style="width: 100%; height: 100%; object-fit: contain; display: block;">
-                </div>
-                <span class="text-sm md:text-2xl font-extrabold tracking-tighter text-white group-hover:text-teal-400 transition-colors truncate">
-                    LA PETITE ORCHESTRA
-                </span>
+            <a href="#" class="group min-w-0 focus-ring" aria-label="La Petite Orchestra — Home">
+                <img src="lpo-logo.png" alt="La Petite Orchestra" class="logo-lockup transition-opacity group-hover:opacity-80">
             </a>
             
             <div class="flex items-center gap-3 md:gap-6 flex-shrink-0">
                 <!-- SWITCH DE IDIOMA INTERACTIVO -->
                 <div class="flex bg-zinc-900 p-1 border border-zinc-800 rounded-sm text-[10px] md:text-xs font-bold">
-                    <button @click="lang = 'en'" :class="lang === 'en' ? 'bg-teal-400 text-black' : 'text-zinc-400 hover:text-white'" class="px-2 py-1 transition-all rounded-xs uppercase">EN</button>
-                    <button @click="lang = 'es'" :class="lang === 'es' ? 'bg-orange-500 text-white' : 'text-zinc-400 hover:text-white'" class="px-2 py-1 transition-all rounded-xs uppercase">ES</button>
+                    <button type="button" aria-label="View site in English" @click="lang = 'en'" :class="lang === 'en' ? 'bg-teal-400 text-black' : 'text-zinc-400 hover:text-white'" class="px-2 py-1 transition-all rounded-xs uppercase">EN</button>
+                    <button type="button" aria-label="Ver sitio en español" @click="lang = 'es'" :class="lang === 'es' ? 'bg-orange-500 text-white' : 'text-zinc-400 hover:text-white'" class="px-2 py-1 transition-all rounded-xs uppercase">ES</button>
                 </div>
 
                 <!-- BOTÓN DE CONTACTO -->
-                <a href="#contacto" class="text-[10px] md:text-sm px-3 py-1.5 md:px-4 md:py-2 bg-orange-500 text-white font-bold uppercase tracking-wider rounded-sm hover:bg-teal-400 hover:text-black transition-all shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]">
-                    <span x-show="lang === 'en'">Contact</span>
-                    <span x-show="lang === 'es'">Contacto</span>
+                <a href="https://calendar.app.google/niWXG4odzZ9zTqN68" target="_blank" rel="noopener noreferrer" onclick="trackLPO('book_call', 'navbar')" class="focus-ring text-[10px] md:text-sm px-3 py-1.5 md:px-4 md:py-2 bg-orange-500 text-white font-bold uppercase tracking-wider rounded-sm hover:bg-teal-400 hover:text-black transition-all shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]">
+                    <span x-show="lang === 'en'">Book a call</span>
+                    <span x-show="lang === 'es'">Agendar reunión</span>
                 </a>
             </div>
         </div>
@@ -127,15 +171,25 @@
             
             <!-- Bajada de texto -->
             <p class="text-xs sm:text-base md:text-lg lg:text-xl text-zinc-400 max-w-2xl mx-auto font-light leading-relaxed mb-8 md:mb-10 block px-4">
-                <span x-show="lang === 'en'">We design high-fidelity content strategies, editorial products, and digital paid media for brands that demand real impact.</span>
-                <span x-show="lang === 'es'">Diseñamos estrategias de contenido, productos editoriales y pauta digital de alta fidelidad para marcas que exigen impacto real.</span>
+                <span x-show="lang === 'en'">We help ambitious brands grow through premium content, paid media, audience strategy and actionable data.</span>
+                <span x-show="lang === 'es'">Ayudamos a marcas ambiciosas a crecer con contenido premium, pauta digital, estrategia de audiencias y datos accionables.</span>
             </p>
             
-            <!-- Botón de Acción -->
-            <a href="#servicios" class="inline-block text-xs md:text-base font-bold bg-white text-black px-5 py-3 md:px-8 md:py-4 uppercase tracking-wider rounded-none border-2 border-black shadow-[4px_4px_0px_0px_#2dd4bf] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all">
-                <span x-show="lang === 'en'">View Services ↓</span>
-                <span x-show="lang === 'es'">Ver Servicios ↓</span>
-            </a>
+            <!-- Acciones principales -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="https://calendar.app.google/niWXG4odzZ9zTqN68" target="_blank" rel="noopener noreferrer"
+                   onclick="trackLPO('book_call', 'hero')"
+                   class="focus-ring inline-block text-xs md:text-base font-bold bg-orange-500 text-white px-5 py-3 md:px-8 md:py-4 uppercase tracking-wider border-2 border-black shadow-[4px_4px_0px_0px_#2dd4bf] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all">
+                    <span x-show="lang === 'en'">Book a strategy call</span>
+                    <span x-show="lang === 'es'">Agendar una reunión</span>
+                </a>
+                <a href="#servicios"
+                   onclick="trackLPO('view_services', 'hero')"
+                   class="focus-ring inline-block text-xs md:text-base font-bold text-white px-5 py-3 md:px-7 md:py-4 uppercase tracking-wider border-2 border-zinc-700 hover:border-teal-400 hover:text-teal-400 transition-all">
+                    <span x-show="lang === 'en'">Explore services ↓</span>
+                    <span x-show="lang === 'es'">Explorar servicios ↓</span>
+                </a>
+            </div>
         </div>
     </header>
 
@@ -156,8 +210,8 @@
                 </div>
                 <div class="text-left lg:text-right max-w-md">
                     <p class="text-zinc-400 text-sm md:text-base leading-relaxed">
-                        <span x-show="lang === 'en'">We do what a premium marketing agency should do. Click on any of our pillars to see the full details.</span>
-                        <span x-show="lang === 'es'">Hacemos lo que una agencia premium de marketing debe hacer. Hacé clic en cualquiera de nuestros pilares para ver el detalle.</span>
+                        <span x-show="lang === 'en'">Four connected capabilities, designed to turn attention into measurable growth. Explore each pillar.</span>
+                        <span x-show="lang === 'es'">Cuatro capacidades conectadas para convertir atención en crecimiento medible. Explorá cada pilar.</span>
                     </p>
                 </div>
             </div>
@@ -166,7 +220,11 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 
                 <!-- Card 1 -->
-                <div @click="openModal = 1" class="group bg-black border-2 border-zinc-800 p-6 md:p-8 flex items-center justify-between cursor-pointer hover:border-teal-400 hover:bg-zinc-900/30 transition-all duration-300 transform hover:-translate-y-1.5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_#2dd4bf]">
+                <div role="button" tabindex="0"
+                     @click="openModal = 1; trackLPO('service_open', 'newsletter')"
+                     @keydown.enter="openModal = 1; trackLPO('service_open', 'newsletter')"
+                     @keydown.space.prevent="openModal = 1; trackLPO('service_open', 'newsletter')"
+                     class="focus-ring group bg-black border-2 border-zinc-800 p-6 md:p-8 flex items-center justify-between cursor-pointer hover:border-teal-400 hover:bg-zinc-900/30 transition-all duration-300 transform hover:-translate-y-1.5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_#2dd4bf]">
                     <h3 class="text-xl md:text-2xl lg:text-3xl font-bold uppercase tracking-tight text-white group-hover:text-teal-400 transition-colors text-left pr-4">
                         <span x-show="lang === 'en'">Newsletter & Audience Strategy</span>
                         <span x-show="lang === 'es'">Estrategia de Newsletters & Audiencias</span>
@@ -175,30 +233,42 @@
                 </div>
 
                 <!-- Card 2 -->
-                <div @click="openModal = 2" class="group bg-black border-2 border-zinc-800 p-6 md:p-8 flex items-center justify-between cursor-pointer hover:border-orange-500 hover:bg-zinc-900/30 transition-all duration-300 transform hover:-translate-y-1.5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_#f97316]">
+                <div role="button" tabindex="0"
+                     @click="openModal = 2; trackLPO('service_open', 'content')"
+                     @keydown.enter="openModal = 2; trackLPO('service_open', 'content')"
+                     @keydown.space.prevent="openModal = 2; trackLPO('service_open', 'content')"
+                     class="focus-ring group bg-black border-2 border-zinc-800 p-6 md:p-8 flex items-center justify-between cursor-pointer hover:border-orange-500 hover:bg-zinc-900/30 transition-all duration-300 transform hover:-translate-y-1.5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_#f97316]">
                     <h3 class="text-xl md:text-2xl lg:text-3xl font-bold uppercase tracking-tight text-white group-hover:text-orange-400 transition-colors text-left pr-4">
                         <span x-show="lang === 'en'">Content & Audiovisual Production</span>
                         <span x-show="lang === 'es'">Contenidos & Producción Audiovisual</span>
                     </h3>
-                    <span class="text-xl md:text-2xl text-zinc-707 group-hover:text-orange-400 font-black flex-shrink-0 transition-transform group-hover:translate-x-1">→</span>
+                    <span class="text-xl md:text-2xl text-zinc-700 group-hover:text-orange-400 font-black flex-shrink-0 transition-transform group-hover:translate-x-1">→</span>
                 </div>
 
                 <!-- Card 3 -->
-                <div @click="openModal = 3" class="group bg-black border-2 border-zinc-800 p-6 md:p-8 flex items-center justify-between cursor-pointer hover:border-orange-500 hover:bg-zinc-900/30 transition-all duration-300 transform hover:-translate-y-1.5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_#f97316]">
+                <div role="button" tabindex="0"
+                     @click="openModal = 3; trackLPO('service_open', 'paid_media')"
+                     @keydown.enter="openModal = 3; trackLPO('service_open', 'paid_media')"
+                     @keydown.space.prevent="openModal = 3; trackLPO('service_open', 'paid_media')"
+                     class="focus-ring group bg-black border-2 border-zinc-800 p-6 md:p-8 flex items-center justify-between cursor-pointer hover:border-orange-500 hover:bg-zinc-900/30 transition-all duration-300 transform hover:-translate-y-1.5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_#f97316]">
                     <h3 class="text-xl md:text-2xl lg:text-3xl font-bold uppercase tracking-tight text-white group-hover:text-orange-400 transition-colors text-left pr-4">
                         <span x-show="lang === 'en'">Digital Promotion & Paid Campaigns</span>
                         <span x-show="lang === 'es'">Promoción Digital & Campañas (Paid)</span>
                     </h3>
-                    <span class="text-xl md:text-2xl text-zinc-707 group-hover:text-orange-400 font-black flex-shrink-0 transition-transform group-hover:translate-x-1">→</span>
+                    <span class="text-xl md:text-2xl text-zinc-700 group-hover:text-orange-400 font-black flex-shrink-0 transition-transform group-hover:translate-x-1">→</span>
                 </div>
 
                 <!-- Card 4 -->
-                <div @click="openModal = 4" class="group bg-black border-2 border-zinc-800 p-6 md:p-8 flex items-center justify-between cursor-pointer hover:border-teal-400 hover:bg-zinc-900/30 transition-all duration-300 transform hover:-translate-y-1.5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_#2dd4bf]">
+                <div role="button" tabindex="0"
+                     @click="openModal = 4; trackLPO('service_open', 'analytics')"
+                     @keydown.enter="openModal = 4; trackLPO('service_open', 'analytics')"
+                     @keydown.space.prevent="openModal = 4; trackLPO('service_open', 'analytics')"
+                     class="focus-ring group bg-black border-2 border-zinc-800 p-6 md:p-8 flex items-center justify-between cursor-pointer hover:border-teal-400 hover:bg-zinc-900/30 transition-all duration-300 transform hover:-translate-y-1.5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_#2dd4bf]">
                     <h3 class="text-xl md:text-2xl lg:text-3xl font-bold uppercase tracking-tight text-white group-hover:text-teal-400 transition-colors text-left pr-4">
                         <span x-show="lang === 'en'">Data, Analytics & Business Reports</span>
                         <span x-show="lang === 'es'">Data, Analítica & Reportes de Negocio</span>
                     </h3>
-                    <span class="text-xl md:text-2xl text-zinc-707 group-hover:text-teal-400 font-black flex-shrink-0 transition-transform group-hover:translate-x-1">→</span>
+                    <span class="text-xl md:text-2xl text-zinc-700 group-hover:text-teal-400 font-black flex-shrink-0 transition-transform group-hover:translate-x-1">→</span>
                 </div>
 
             </div>
@@ -229,7 +299,7 @@
                                 <span x-show="lang === 'en'">Featured Service</span>
                                 <span x-show="lang === 'es'">Servicio Destacado</span>
                             </span>
-                            <button @click="openModal = null" class="text-zinc-400 hover:text-white text-3xl font-bold leading-none">&times;</button>
+                            <button type="button" @click="openModal = null" class="text-zinc-400 hover:text-white text-3xl font-bold leading-none">&times;</button>
                         </div>
 
                         <!-- Contenido 1 (Newsletters) -->
@@ -243,19 +313,19 @@
                             <ul x-show="lang === 'en'" class="space-y-3.5 text-zinc-300 text-sm md:text-base">
                                 <li class="flex items-start gap-3">
                                     <span class="text-teal-400 font-bold mt-0.5">✦</span>
-                                    <span><strong>Algorithmic Independence:</strong> We build direct communication channels to cultivate loyal and monetizable communities.</span>
+                                    <span><strong>Own Your Audience:</strong> Build a direct communication channel that reduces platform dependence and strengthens loyalty.</span>
                                 </li>
                                 <li class="flex items-start gap-3">
                                     <span class="text-teal-400 font-bold mt-0.5">✦</span>
-                                    <span><strong>Proven Success Stories:</strong> We power editorial growth driven by real-world expertise like <em>QuePasa</em> and <em>Tierra Viva</em>.</span>
+                                    <span><strong>Editorial Experience:</strong> Apply proven newsletter and audience-growth practices developed through work with <em>QuePasa</em> and <em>Tierra Viva</em>.</span>
                                 </li>
                                 <li class="flex items-start gap-3">
                                     <span class="text-teal-400 font-bold mt-0.5">✦</span>
-                                    <span><strong>Curation & Custom Design:</strong> We code exclusive, high-fidelity layouts that optimize the subscriber reading experience.</span>
+                                    <span><strong>A Better Reading Experience:</strong> Use carefully curated content and custom layouts built to make every edition clearer and more engaging.</span>
                                 </li>
                                 <li class="flex items-start gap-3">
                                     <span class="text-teal-400 font-bold mt-0.5">✦</span>
-                                    <span><strong>Conversion Optimization:</strong> We actively monitor and boost your Open Rates (OR), Click-Through Rates (CTR), and overall engagement.</span>
+                                    <span><strong>Continuous Optimization:</strong> Improve opens, clicks and engagement through consistent measurement and iteration.</span>
                                 </li>
                             </ul>
 
@@ -263,19 +333,19 @@
                             <ul x-show="lang === 'es'" class="space-y-3.5 text-zinc-300 text-sm md:text-base">
                                 <li class="flex items-start gap-3">
                                     <span class="text-teal-400 font-bold mt-0.5">✦</span>
-                                    <span><strong>Independencia algorítmica:</strong> Creamos canales de comunicación directos para construir comunidades fieles y monetizables.</span>
+                                    <span><strong>Audiencia propia:</strong> Construí un canal directo que reduzca la dependencia de las plataformas y fortalezca la fidelidad.</span>
                                 </li>
                                 <li class="flex items-start gap-3">
                                     <span class="text-teal-400 font-bold mt-0.5">✦</span>
-                                    <span><strong>Casos de éxito comprobados:</strong> Potenciamos estrategias editoriales basadas en experiencias reales como <em>QuePasa</em> y <em>Tierra Viva</em>.</span>
+                                    <span><strong>Experiencia editorial:</strong> Aplicamos aprendizajes reales de crecimiento de newsletters y audiencias desarrollados con <em>QuePasa</em> y <em>Tierra Viva</em>.</span>
                                 </li>
                                 <li class="flex items-start gap-3">
                                     <span class="text-teal-400 font-bold mt-0.5">✦</span>
-                                    <span><strong>Curaduría y Diseño Custom:</strong> Maquetamos plantillas exclusivas de alta fidelidad técnica visual que maximizan la experiencia de lectura.</span>
+                                    <span><strong>Mejor experiencia de lectura:</strong> Combinamos curaduría y diseño a medida para crear ediciones más claras y atractivas.</span>
                                 </li>
                                 <li class="flex items-start gap-3">
                                     <span class="text-teal-400 font-bold mt-0.5">✦</span>
-                                    <span><strong>Optimización de Conversión:</strong> Monitoreamos y mejoramos activamente tus tasas de apertura (OR), clics (CTR) y engagement general.</span>
+                                    <span><strong>Optimización continua:</strong> Mejoramos aperturas, clics y engagement a partir de medición e iteración constante.</span>
                                 </li>
                             </ul>
                         </div>
@@ -291,15 +361,15 @@
                             <ul x-show="lang === 'en'" class="space-y-3.5 text-zinc-300 text-sm md:text-base">
                                 <li class="flex items-start gap-3">
                                     <span class="text-orange-500 font-bold mt-0.5">✦</span>
-                                    <span><strong>Scroll Retention:</strong> We develop iconic visual pieces designed specifically to capture attention within seconds.</span>
+                                    <span><strong>Capture Attention:</strong> Create distinctive visual pieces designed to earn attention within the first seconds.</span>
                                 </li>
                                 <li class="flex items-start gap-3">
                                     <span class="text-orange-500 font-bold mt-0.5">✦</span>
-                                    <span><strong>Organic & Dynamic Formats:</strong> Full-scale production of vertical videos and narratives optimized for today's social media platforms.</span>
+                                    <span><strong>Platform-Native Storytelling:</strong> Produce vertical video and dynamic narratives that feel natural in today’s social feeds.</span>
                                 </li>
                                 <li class="flex items-start gap-3">
                                     <span class="text-orange-500 font-bold mt-0.5">✦</span>
-                                    <span><strong>Editorial & Institutional Ads:</strong> High-end ad creative styling tailored perfectly to represent premium brand values.</span>
+                                    <span><strong>Premium Brand Expression:</strong> Translate editorial and institutional messages into polished creative that reflects your brand.</span>
                                 </li>
                             </ul>
 
@@ -307,15 +377,15 @@
                             <ul x-show="lang === 'es'" class="space-y-3.5 text-zinc-300 text-sm md:text-base">
                                 <li class="flex items-start gap-3">
                                     <span class="text-orange-500 font-bold mt-0.5">✦</span>
-                                    <span><strong>Retención de Scroll:</strong> Desarrollamos piezas visuales icónicas diseñadas específicamente para captar la atención en segundos.</span>
+                                    <span><strong>Captar atención:</strong> Creamos piezas visuales distintivas pensadas para ganar atención en los primeros segundos.</span>
                                 </li>
                                 <li class="flex items-start gap-3">
                                     <span class="text-orange-500 font-bold mt-0.5">✦</span>
-                                    <span><strong>Formatos Orgánicos y Dinámicos:</strong> Producción integral de video vertical y narrativas optimizadas para las plataformas actuales.</span>
+                                    <span><strong>Narrativas nativas de plataforma:</strong> Producimos video vertical y formatos dinámicos que se integran naturalmente a las redes.</span>
                                 </li>
                                 <li class="flex items-start gap-3">
                                     <span class="text-orange-500 font-bold mt-0.5">✦</span>
-                                    <span><strong>Avisos Editoriales e Institucionales:</strong> Diseño de anuncios de alto nivel estético alineados a la identidad de marcas premium.</span>
+                                    <span><strong>Expresión de marca premium:</strong> Convertimos mensajes editoriales e institucionales en piezas cuidadas y coherentes con tu identidad.</span>
                                 </li>
                             </ul>
                         </div>
@@ -331,15 +401,15 @@
                             <ul x-show="lang === 'en'" class="space-y-3.5 text-zinc-300 text-sm md:text-base">
                                 <li class="flex items-start gap-3">
                                     <span class="text-orange-500 font-bold mt-0.5">✦</span>
-                                    <span><strong>Multiplatform Ecosystem:</strong> Strategic campaign management across Meta Ads, Google Ads, and TikTok Ads.</span>
+                                    <span><strong>Reach the Right Audience:</strong> Coordinate campaigns across Meta Ads, Google Ads and TikTok Ads around a shared business objective.</span>
                                 </li>
                                 <li class="flex items-start gap-3">
                                     <span class="text-orange-500 font-bold mt-0.5">✦</span>
-                                    <span><strong>Account Audits:</strong> We analyze your current advertising setups to eliminate budget leaks and missed opportunities.</span>
+                                    <span><strong>Reduce Wasted Spend:</strong> Identify budget leaks, structural issues and missed opportunities through a complete account audit.</span>
                                 </li>
                                 <li class="flex items-start gap-3">
                                     <span class="text-orange-500 font-bold mt-0.5">✦</span>
-                                    <span><strong>Performance-Driven Focus:</strong> Ultra-targeted acquisition setups designed to accelerate conversions, reach, and true Return on Investment (ROI).</span>
+                                    <span><strong>Optimize for Outcomes:</strong> Build focused acquisition campaigns around conversions, qualified reach and measurable return.</span>
                                 </li>
                             </ul>
 
@@ -347,15 +417,15 @@
                             <ul x-show="lang === 'es'" class="space-y-3.5 text-zinc-300 text-sm md:text-base">
                                 <li class="flex items-start gap-3">
                                     <span class="text-orange-500 font-bold mt-0.5">✦</span>
-                                    <span><strong>Ecosistema Multiplataforma:</strong> Planificación estratégica en Meta Ads, Google Ads y TikTok Ads.</span>
+                                    <span><strong>Llegar a la audiencia correcta:</strong> Coordinamos campañas en Meta Ads, Google Ads y TikTok Ads alrededor de un mismo objetivo de negocio.</span>
                                 </li>
                                 <li class="flex items-start gap-3">
                                     <span class="text-orange-500 font-bold mt-0.5">✦</span>
-                                    <span><strong>Auditoría de Estructuras:</strong> Analizamos tus cuentas publicitarias actuales para eliminar fugas de presupuesto.</span>
+                                    <span><strong>Reducir desperdicio de inversión:</strong> Detectamos fugas de presupuesto, problemas de estructura y oportunidades desaprovechadas.</span>
                                 </li>
                                 <li class="flex items-start gap-3">
                                     <span class="text-orange-500 font-bold mt-0.5">✦</span>
-                                    <span><strong>Enfoque en Performance:</strong> Campañas ultra segmentadas orientadas a generar conversiones, alcance y retorno real (ROI).</span>
+                                    <span><strong>Optimizar resultados:</strong> Diseñamos campañas enfocadas en conversiones, alcance calificado y retorno medible.</span>
                                 </li>
                             </ul>
                         </div>
@@ -371,15 +441,15 @@
                             <ul x-show="lang === 'en'" class="space-y-3.5 text-zinc-300 text-sm md:text-base">
                                 <li class="flex items-start gap-3">
                                     <span class="text-teal-400 font-bold mt-0.5">✦</span>
-                                    <span><strong>Ecosystem Tracking:</strong> Centralized data measurement across your newsletters, paid traffic, and organic content performance.</span>
+                                    <span><strong>See the Full Picture:</strong> Centralize measurement across newsletters, paid traffic and organic content.</span>
                                 </li>
                                 <li class="flex items-start gap-3">
                                     <span class="text-teal-400 font-bold mt-0.5">✦</span>
-                                    <span><strong>Data Translation:</strong> We decode intricate technical analytics into crystal-clear, clean executive key metric summaries.</span>
+                                    <span><strong>Turn Data into Clarity:</strong> Translate complex analytics into concise, decision-ready reporting.</span>
                                 </li>
                                 <li class="flex items-start gap-3">
                                     <span class="text-teal-400 font-bold mt-0.5">✦</span>
-                                    <span><strong>Actionable Roadmap:</strong> Comprehensive monthly business reports designed to confidently guide your commercial and creative next steps.</span>
+                                    <span><strong>Know What to Do Next:</strong> Use actionable monthly reports to guide commercial and creative priorities.</span>
                                 </li>
                             </ul>
 
@@ -387,20 +457,27 @@
                             <ul x-show="lang === 'es'" class="space-y-3.5 text-zinc-300 text-sm md:text-base">
                                 <li class="flex items-start gap-3">
                                     <span class="text-teal-400 font-bold mt-0.5">✦</span>
-                                    <span><strong>Tracking de Ecosistema:</strong> Medición centralizada de tus newsletters, pauta digital y rendimiento orgánico.</span>
+                                    <span><strong>Ver el panorama completo:</strong> Centralizamos la medición de newsletters, pauta y contenido orgánico.</span>
                                 </li>
                                 <li class="flex items-start gap-3">
                                     <span class="text-teal-400 font-bold mt-0.5">✦</span>
-                                    <span><strong>Traducción de Datos:</strong> Convertimos métricas técnicas complejas en paneles ejecutivos sencillos y transparentes.</span>
+                                    <span><strong>Convertir datos en claridad:</strong> Traducimos métricas complejas en reportes concisos para tomar decisiones.</span>
                                 </li>
                                 <li class="flex items-start gap-3">
                                     <span class="text-teal-400 font-bold mt-0.5">✦</span>
-                                    <span><strong>Brújula de Decisiones:</strong> Reportes mensuales 100% accionables para guiar tus próximos pasos comerciales y creativos.</span>
+                                    <span><strong>Definir el próximo paso:</strong> Creamos reportes mensuales accionables para ordenar prioridades comerciales y creativas.</span>
                                 </li>
                             </ul>
                         </div>
 
-                        <button @click="openModal = null" class="mt-8 w-full bg-white text-black font-bold uppercase py-3 border border-black tracking-wider hover:bg-teal-400 transition-colors text-sm md:text-base">
+                        <a href="https://calendar.app.google/niWXG4odzZ9zTqN68" target="_blank" rel="noopener noreferrer"
+                           onclick="trackLPO('book_call', 'service_modal')"
+                           class="focus-ring mt-8 w-full block text-center bg-orange-500 text-white font-bold uppercase py-3 border border-black tracking-wider hover:bg-teal-400 hover:text-black transition-colors text-sm md:text-base">
+                            <span x-show="lang === 'en'">Discuss this service</span>
+                            <span x-show="lang === 'es'">Conversemos sobre este servicio</span>
+                        </a>
+
+                        <button type="button" @click="openModal = null" class="mt-3 w-full bg-white text-black font-bold uppercase py-3 border border-black tracking-wider hover:bg-teal-400 transition-colors text-sm md:text-base">
                             <span x-show="lang === 'en'">Close Window</span>
                             <span x-show="lang === 'es'">Cerrar Ventana</span>
                         </button>
@@ -411,27 +488,138 @@
         </div>
     </section>
 
+
+    <!-- EXPERIENCIA SELECCIONADA -->
+    <section id="experiencia" class="bg-black py-20 px-4 md:px-6 border-t-2 border-zinc-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-16 items-start">
+                <div>
+                    <span class="section-kicker">
+                        <span x-show="lang === 'en'">// SELECTED EXPERIENCE</span>
+                        <span x-show="lang === 'es'">// EXPERIENCIA SELECCIONADA</span>
+                    </span>
+                    <h2 class="text-3xl md:text-6xl font-black uppercase tracking-tight mt-3">
+                        <span x-show="lang === 'en'">WORK BUILT IN THE REAL WORLD</span>
+                        <span x-show="lang === 'es'">TRABAJO CON EXPERIENCIA REAL</span>
+                    </h2>
+                </div>
+                <div class="grid sm:grid-cols-2 gap-5">
+                    <article class="border-2 border-zinc-800 bg-zinc-950 p-6 hover:border-teal-400 transition-colors">
+                        <p class="eyebrow text-teal-400">QuePasa Media</p>
+                        <h3 class="text-2xl font-black uppercase mt-3 mb-4">
+                            <span x-show="lang === 'en'">Audience and newsletter growth</span>
+                            <span x-show="lang === 'es'">Crecimiento de audiencia y newsletters</span>
+                        </h3>
+                        <p class="text-zinc-400 leading-relaxed">
+                            <span x-show="lang === 'en'">Editorial strategy, newsletter optimization, paid promotion and performance reporting for a multilingual media ecosystem.</span>
+                            <span x-show="lang === 'es'">Estrategia editorial, optimización de newsletters, promoción paga y reportes de rendimiento para un ecosistema de medios multilingüe.</span>
+                        </p>
+                    </article>
+                    <article class="border-2 border-zinc-800 bg-zinc-950 p-6 hover:border-orange-500 transition-colors">
+                        <p class="eyebrow text-orange-500">Tierra Viva</p>
+                        <h3 class="text-2xl font-black uppercase mt-3 mb-4">
+                            <span x-show="lang === 'en'">Content and digital communication</span>
+                            <span x-show="lang === 'es'">Contenido y comunicación digital</span>
+                        </h3>
+                        <p class="text-zinc-400 leading-relaxed">
+                            <span x-show="lang === 'en'">Audience-focused content, audiovisual production and campaign assets designed to support reach and engagement.</span>
+                            <span x-show="lang === 'es'">Contenido orientado a audiencias, producción audiovisual y piezas de campaña pensadas para impulsar alcance e interacción.</span>
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CÓMO TRABAJAMOS -->
+    <section class="bg-zinc-950 py-20 px-4 md:px-6 border-t-2 border-zinc-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="section-kicker">
+                    <span x-show="lang === 'en'">// HOW WE WORK</span>
+                    <span x-show="lang === 'es'">// CÓMO TRABAJAMOS</span>
+                </span>
+                <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tight mt-3">
+                    <span x-show="lang === 'en'">STRATEGY, EXECUTION, MEASUREMENT</span>
+                    <span x-show="lang === 'es'">ESTRATEGIA, EJECUCIÓN, MEDICIÓN</span>
+                </h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-5">
+                <div class="border-t-4 border-orange-500 bg-black p-6">
+                    <span class="text-5xl font-black text-zinc-800">01</span>
+                    <h3 class="text-xl font-black uppercase mt-4 mb-3">
+                        <span x-show="lang === 'en'">Understand</span>
+                        <span x-show="lang === 'es'">Entender</span>
+                    </h3>
+                    <p class="text-zinc-400">
+                        <span x-show="lang === 'en'">We map your objectives, audience, channels and current performance before proposing a solution.</span>
+                        <span x-show="lang === 'es'">Mapeamos objetivos, audiencia, canales y rendimiento actual antes de proponer una solución.</span>
+                    </p>
+                </div>
+                <div class="border-t-4 border-teal-400 bg-black p-6">
+                    <span class="text-5xl font-black text-zinc-800">02</span>
+                    <h3 class="text-xl font-black uppercase mt-4 mb-3">
+                        <span x-show="lang === 'en'">Build</span>
+                        <span x-show="lang === 'es'">Construir</span>
+                    </h3>
+                    <p class="text-zinc-400">
+                        <span x-show="lang === 'en'">We turn strategy into content, campaigns, audience products and measurement systems.</span>
+                        <span x-show="lang === 'es'">Convertimos la estrategia en contenido, campañas, productos de audiencia y sistemas de medición.</span>
+                    </p>
+                </div>
+                <div class="border-t-4 border-orange-500 bg-black p-6">
+                    <span class="text-5xl font-black text-zinc-800">03</span>
+                    <h3 class="text-xl font-black uppercase mt-4 mb-3">
+                        <span x-show="lang === 'en'">Improve</span>
+                        <span x-show="lang === 'es'">Mejorar</span>
+                    </h3>
+                    <p class="text-zinc-400">
+                        <span x-show="lang === 'en'">We measure what matters, identify opportunities and continuously refine the work.</span>
+                        <span x-show="lang === 'es'">Medimos lo que importa, detectamos oportunidades y refinamos el trabajo de manera continua.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- SECCIÓN CONTACTO -->
-    <section id="contacto" class="bg-black py-20 px-4 md:px-6 border-t-2 border-zinc-900">
-        <div class="max-w-3xl mx-auto text-center flex flex-col items-center justify-center">
-            <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tight text-white mb-4">
-                <span x-show="lang === 'en'">LET'S WORK TOGETHER?</span>
-                <span x-show="lang === 'es'">¿HACEMOS ALGO JUNTOS?</span>
+    <section id="contacto" class="bg-black py-24 px-4 md:px-6 border-t-2 border-zinc-900">
+        <div class="max-w-4xl mx-auto text-center flex flex-col items-center justify-center">
+            <span class="section-kicker">
+                <span x-show="lang === 'en'">// LET'S TALK</span>
+                <span x-show="lang === 'es'">// CONVERSEMOS</span>
+            </span>
+            <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-white mt-3 mb-5">
+                <span x-show="lang === 'en'">LET'S FIND YOUR NEXT GROWTH OPPORTUNITY</span>
+                <span x-show="lang === 'es'">ENCONTREMOS TU PRÓXIMA OPORTUNIDAD DE CRECIMIENTO</span>
             </h2>
-            <p class="text-zinc-400 text-base md:text-lg mb-8 max-w-lg mx-auto">
-                <span x-show="lang === 'en'">Let's scale your brand's communication to the next technical and visual level. Get in touch through your preferred channel:</span>
-                <span x-show="lang === 'es'">Llevemos la comunicación de tu marca al siguiente nivel técnico y visual. Escribinos por el canal que prefieras:</span>
+            <p class="text-zinc-400 text-base md:text-xl mb-9 max-w-2xl mx-auto leading-relaxed">
+                <span x-show="lang === 'en'">Book a 30-minute conversation to tell us about your goals, current challenges and what you want to improve. No generic pitch: just a focused first exchange.</span>
+                <span x-show="lang === 'es'">Agendá una conversación de 30 minutos para contarnos tus objetivos, desafíos actuales y qué querés mejorar. Sin discursos genéricos: un primer intercambio concreto.</span>
             </p>
-            
+
+            <a href="https://calendar.app.google/niWXG4odzZ9zTqN68" target="_blank" rel="noopener noreferrer"
+               onclick="trackLPO('book_call', 'contact_primary')"
+               class="focus-ring w-full sm:w-auto text-center text-sm md:text-base font-black bg-orange-500 text-white px-8 py-4 uppercase border-2 border-black shadow-[5px_5px_0px_0px_#2dd4bf] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all tracking-wide mb-8">
+                <span x-show="lang === 'en'">Book a strategy call</span>
+                <span x-show="lang === 'es'">Agendar una reunión</span>
+            </a>
+
+            <p class="text-zinc-600 text-xs uppercase tracking-widest mb-4">
+                <span x-show="lang === 'en'">Or contact us directly</span>
+                <span x-show="lang === 'es'">O escribinos directamente</span>
+            </p>
+
             <div class="flex flex-col sm:flex-row gap-4 w-full justify-center items-center">
-                <!-- Botón de Email -->
-                <a href="mailto:lapetiteorchestra@gmail.com" class="w-full sm:w-auto text-center text-sm md:text-base font-black bg-orange-500 text-white px-6 py-4 uppercase border-2 border-black shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all tracking-tight">
+                <a href="mailto:lapetiteorchestra@gmail.com"
+                   onclick="trackLPO('contact_email', 'footer')"
+                   class="focus-ring w-full sm:w-auto text-center text-sm md:text-base font-black bg-zinc-900 text-white px-6 py-4 uppercase border-2 border-zinc-700 hover:border-orange-500 transition-all tracking-tight">
                     hola@lapetiteorchestra.com
                 </a>
-                
-                <!-- Botón de WhatsApp -->
-                <a href="https://wa.me/+5491123396422" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto text-center text-sm md:text-base font-black bg-[#128C7E] text-white px-6 py-4 uppercase border-2 border-black shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all tracking-tight flex items-center justify-center gap-2">
-                    <svg class="w-5 h-5 fill-current text-white" viewBox="0 0 24 24">
+                <a href="https://wa.me/5491123396422" target="_blank" rel="noopener noreferrer"
+                   onclick="trackLPO('contact_whatsapp', 'footer')"
+                   class="focus-ring w-full sm:w-auto text-center text-sm md:text-base font-black bg-[#128C7E] text-white px-6 py-4 uppercase border-2 border-black hover:bg-[#0f766e] transition-all tracking-tight flex items-center justify-center gap-2">
+                    <svg aria-hidden="true" class="w-5 h-5 fill-current text-white" viewBox="0 0 24 24">
                         <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397 0 11.93 0c3.165.001 6.14 1.233 8.377 3.473 2.237 2.24 3.466 5.214 3.466 8.385 0 6.533-5.338 11.882-11.87 11.882-2.004-.001-3.972-.51-5.729-1.48L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.725 1.451 5.4 0 9.792-4.413 9.795-9.839.001-2.628-1.01-5.1-2.846-6.942-1.836-1.843-4.278-2.857-6.932-2.858-5.402 0-9.795 4.414-9.798 9.84-.001 1.948.497 3.491 1.45 4.969l-.995 3.637 3.73-.979zm11.232-6.402c-.314-.157-1.855-.915-2.143-1.02-.288-.104-.497-.157-.706.157-.21.314-.81.104-.993.314-.183.21-.366.236-.68.079-.314-.157-1.326-.49-2.528-1.561-.935-.836-1.567-1.868-1.75-2.183-.183-.314-.02-.485.137-.641.142-.14.314-.366.47-.55.157-.183.21-.314.314-.524.104-.21.052-.393-.026-.55-.079-.157-.706-1.701-.967-2.33-.254-.609-.513-.526-.706-.536-.183-.01-.393-.01-.601-.01-.21 0-.55.079-.836.393-.288.314-1.1 1.074-1.1 2.619 0 1.545 1.127 3.039 1.284 3.249.157.21 2.217 3.385 5.372 4.747.75.324 1.336.518 1.793.663.753.239 1.439.205 1.982.124.605-.09 1.855-.758 2.117-1.453.262-.695.262-1.289.183-1.411-.078-.124-.288-.197-.601-.354z"/>
                     </svg>
                     WhatsApp
@@ -444,6 +632,43 @@
     <footer class="bg-zinc-950 py-8 px-6 text-center text-xs md:text-sm text-zinc-600 border-t border-zinc-900">
         <p>&copy; 2026 LA PETITE ORCHESTRA. <span x-show="lang === 'en'">All rights reserved.</span><span x-show="lang === 'es'">Todos los derechos reservados.</span></p>
     </footer>
+
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "La Petite Orchestra",
+      "url": "https://lapetiteorchestra.com/",
+      "logo": "https://lapetiteorchestra.com/lpo-logo.png",
+      "email": "lapetiteorchestra@gmail.com",
+      "sameAs": [],
+      "description": "Creative marketing and communication agency specializing in content strategy, paid media, audience development and analytics.",
+      "areaServed": "Worldwide"
+    }
+    </script>
+    <script>
+      function trackLPO(eventName, location) {
+        if (typeof gtag === 'function') {
+          gtag('event', eventName, {
+            event_category: 'engagement',
+            event_label: location,
+            link_url: eventName === 'book_call' ? 'https://calendar.app.google/niWXG4odzZ9zTqN68' : undefined
+          });
+        }
+      }
+
+      // Track meaningful scroll depth once.
+      let lpoScrollTracked = false;
+      window.addEventListener('scroll', function () {
+        if (lpoScrollTracked) return;
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        if (scrollable > 0 && window.scrollY / scrollable >= 0.75) {
+          lpoScrollTracked = true;
+          trackLPO('scroll_75', 'page');
+        }
+      }, { passive: true });
+    </script>
 
 </body>
 </html>
