@@ -73,19 +73,26 @@
     }
 
     .nav-inner{
-      width:100%;
+      width:min(calc(100% - 80px),var(--max));
+      margin-inline:auto;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:32px;
-      padding-inline:4px;
+      padding-inline:0;
     }
 
-    .brand img{
-      width:430px;
-      height:78px;
-      object-fit:contain;
-      object-position:left center;
+    .brand{
+      display:flex;
+      align-items:center;
+      flex:0 0 auto;
+    }
+    .brand-logo{
+      display:block;
+      width:300px;
+      height:auto;
+      aspect-ratio:1340 / 385;
+      overflow:visible;
     }
 
     .nav-actions{display:flex;align-items:center;gap:26px}
@@ -516,7 +523,7 @@
       content:"";
       position:absolute;
       left:20px;
-      right:20px;
+      right:calc(25% - 20px);
       top:49px;
       height:2px;
       background:linear-gradient(90deg,var(--orange),#d8b84c 34%,#75bb82 67%,var(--teal));
@@ -527,12 +534,12 @@
     .journey-step{
       position:relative;
       min-width:0;
-      padding-right:24px;
+      padding-right:44px;
       color:var(--text);
       z-index:1;
     }
     .journey-step + .journey-step{
-      padding-left:24px;
+      padding-left:0;
     }
 
     .journey-node{
@@ -546,7 +553,7 @@
       background:var(--bg);
       border:2px solid currentColor;
       box-shadow:0 0 0 7px rgba(5,7,6,1);
-      margin:0 0 22px;
+      margin:0 0 22px 0;
       font-size:11px;
       font-weight:800;
       letter-spacing:.08em;
@@ -573,14 +580,7 @@
       margin:0;
       max-width:250px;
     }
-
-
-    .journey-step:first-child .journey-node{margin-left:0}
-    .journey-step:nth-child(2) .journey-node{margin-left:calc(33.333% - 20px)}
-    .journey-step:nth-child(3) .journey-node{margin-left:calc(66.666% - 20px)}
-    .journey-step:last-child .journey-node{margin-left:auto;margin-right:0}
-
-    /* CTA */
+/* CTA */
     .closing{
       padding:82px 0 78px;
       text-align:center;
@@ -659,7 +659,7 @@
 
     @media (max-width:980px){
       .shell{width:min(calc(100% - 40px),var(--max))}
-      .brand img{width:330px;height:66px}
+      .brand-logo{width:255px}
       .hero{min-height:600px}
       .hero-content{width:82vw}
       .section-head,.collab-intro,.process-header,.services-intro{grid-template-columns:1fr}
@@ -674,7 +674,8 @@
 
     @media (max-width:720px){
       .nav{height:78px}
-      .brand img{width:245px;height:54px}
+      .nav-inner{width:calc(100% - 32px)}
+      .brand-logo{width:205px}
       .nav-actions{gap:14px}
       .nav .btn{display:none}
       .hero{min-height:600px}
@@ -747,7 +748,9 @@
   <nav class="nav">
     <div class="shell nav-inner">
       <a class="brand focus" href="#" aria-label="La Petite Orchestra home">
-        <img src="logo-lpo.svg" alt="La Petite Orchestra">
+        <svg class="brand-logo" viewBox="110 540 1340 385" role="img" aria-label="La Petite Orchestra">
+          <image href="logo-lpo.svg" x="0" y="0" width="1500" height="1500" preserveAspectRatio="xMidYMid meet"></image>
+        </svg>
       </a>
 
       <div class="nav-actions">
