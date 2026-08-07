@@ -52,7 +52,7 @@
 
     a{color:inherit;text-decoration:none}
     button{font:inherit}
-    img{max-width:100%;display:block}
+    img{max-width:min(calc(100% - 72px),var(--max));display:block}
     [hidden]{display:none!important}
 
     .shell{
@@ -73,8 +73,7 @@
     }
 
     .nav-inner{
-      width:min(calc(100% - 80px),var(--max));
-      margin-inline:auto;
+      width:100%;
       display:flex;
       align-items:center;
       justify-content:space-between;
@@ -82,18 +81,13 @@
       padding-inline:0;
     }
 
-    .brand{
-      display:flex;
-      align-items:center;
-      flex:0 0 auto;
-    }
-    .brand-logo{
-      display:block;
-      width:300px;
-      height:auto;
-      aspect-ratio:1340 / 385;
-      overflow:visible;
-    }
+    .brand img{
+display:block;
+width:300px;
+height:auto;
+margin-left:-6px;
+margin-top:-2px;
+}
 
     .nav-actions{display:flex;align-items:center;gap:26px}
     .lang{
@@ -523,7 +517,7 @@
       content:"";
       position:absolute;
       left:20px;
-      right:calc(25% - 20px);
+      right:20px;
       top:49px;
       height:2px;
       background:linear-gradient(90deg,var(--orange),#d8b84c 34%,#75bb82 67%,var(--teal));
@@ -534,12 +528,12 @@
     .journey-step{
       position:relative;
       min-width:0;
-      padding-right:44px;
+      padding-right:24px;
       color:var(--text);
       z-index:1;
     }
     .journey-step + .journey-step{
-      padding-left:0;
+      padding-left:24px;
     }
 
     .journey-node{
@@ -553,7 +547,7 @@
       background:var(--bg);
       border:2px solid currentColor;
       box-shadow:0 0 0 7px rgba(5,7,6,1);
-      margin:0 0 22px 0;
+      margin:0 0 22px;
       font-size:11px;
       font-weight:800;
       letter-spacing:.08em;
@@ -580,7 +574,14 @@
       margin:0;
       max-width:250px;
     }
-/* CTA */
+
+
+    .journey-step:first-child .journey-node{margin-left:0}
+    .journey-step:nth-child(2) .journey-node{margin-left:calc(33.333% - 20px)}
+    .journey-step:nth-child(3) .journey-node{margin-left:calc(66.666% - 20px)}
+    .journey-step:last-child .journey-node{margin-left:auto;margin-right:0}
+
+    /* CTA */
     .closing{
       padding:82px 0 78px;
       text-align:center;
@@ -659,7 +660,7 @@
 
     @media (max-width:980px){
       .shell{width:min(calc(100% - 40px),var(--max))}
-      .brand-logo{width:255px}
+      .brand img{width:330px;height:66px}
       .hero{min-height:600px}
       .hero-content{width:82vw}
       .section-head,.collab-intro,.process-header,.services-intro{grid-template-columns:1fr}
@@ -674,8 +675,7 @@
 
     @media (max-width:720px){
       .nav{height:78px}
-      .nav-inner{width:calc(100% - 32px)}
-      .brand-logo{width:205px}
+      .brand img{width:245px;height:54px}
       .nav-actions{gap:14px}
       .nav .btn{display:none}
       .hero{min-height:600px}
@@ -748,9 +748,7 @@
   <nav class="nav">
     <div class="shell nav-inner">
       <a class="brand focus" href="#" aria-label="La Petite Orchestra home">
-        <svg class="brand-logo" viewBox="110 540 1340 385" role="img" aria-label="La Petite Orchestra">
-          <image href="logo-lpo.svg" x="0" y="0" width="1500" height="1500" preserveAspectRatio="xMidYMid meet"></image>
-        </svg>
+        <img src="logo-lpo.svg" alt="La Petite Orchestra">
       </a>
 
       <div class="nav-actions">
