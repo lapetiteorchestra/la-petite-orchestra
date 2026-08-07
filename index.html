@@ -81,8 +81,8 @@
     }
 
     .brand img{
-      width:286px;
-      height:62px;
+      width:360px;
+      height:72px;
       object-fit:contain;
       object-position:left center;
     }
@@ -133,7 +133,7 @@
 
     /* HERO */
     .hero{
-      min-height:720px;
+      min-height:640px;
       position:relative;
       overflow:hidden;
       border-bottom:1px solid rgba(255,255,255,.07);
@@ -147,7 +147,7 @@
       width:100%;
       height:100%;
       z-index:0;
-      opacity:.74;
+      opacity:.95;
     }
 
     .hero::after{
@@ -165,7 +165,7 @@
       position:relative;
       z-index:2;
       width:min(760px,68vw);
-      padding:86px 0 92px;
+      padding:64px 0 70px;
     }
 
     .eyebrow{
@@ -217,7 +217,7 @@
 
     /* SECTIONS */
     section.content-section{
-      padding:96px 0;
+      padding:72px 0;
       border-bottom:1px solid rgba(255,255,255,.07);
     }
 
@@ -320,22 +320,22 @@
       min-width:0;
       border:1px solid var(--line);
       background:linear-gradient(145deg,rgba(255,255,255,.018),rgba(255,255,255,.005));
-      padding:36px;
+      padding:30px;
       display:grid;
-      grid-template-columns:minmax(0,1fr) 240px;
-      gap:34px;
-      align-items:center;
+      grid-template-columns:minmax(0,1.15fr) minmax(220px,.85fr);
+      gap:28px;
+      align-items:stretch;
       transition:.24s ease;
     }
     .project:hover{border-color:#343d39;transform:translateY(-2px)}
     .project-logo{
-      height:62px;
-      max-width:270px;
+      height:42px;
+      max-width:190px;
       object-fit:contain;
       object-position:left center;
       margin-bottom:26px;
     }
-    .project-logo.tierra{height:92px}
+    .project-logo.tierra{height:60px;max-width:175px}
     .project h3{
       font-size:26px;
       line-height:1.2;
@@ -360,32 +360,51 @@
       text-transform:uppercase;
     }
     .project-visual{
-      height:210px;
+      min-height:220px;
       border-left:1px solid var(--line);
+      display:grid;
+      grid-template-rows:1fr 1fr;
+      gap:12px;
+      padding-left:28px;
+      position:relative;
+    }
+    .asset-tile{
+      border:1px solid rgba(255,255,255,.09);
+      background:
+        linear-gradient(135deg,rgba(255,255,255,.03),rgba(255,255,255,.008)),
+        radial-gradient(circle at 80% 20%,rgba(36,212,195,.07),transparent 42%);
+      padding:18px;
       display:flex;
-      align-items:center;
-      justify-content:center;
-      position:relative;
-      overflow:hidden;
+      flex-direction:column;
+      justify-content:space-between;
+      min-height:100px;
     }
-    .project-visual::before,
-    .project-visual::after{
-      content:"";
-      position:absolute;
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:50%;
+    .asset-tile.orange{
+      background:
+        linear-gradient(135deg,rgba(255,255,255,.03),rgba(255,255,255,.008)),
+        radial-gradient(circle at 80% 20%,rgba(255,106,0,.08),transparent 42%);
     }
-    .project-visual::before{width:170px;height:170px}
-    .project-visual::after{width:110px;height:110px}
-    .project-mark{
-      position:relative;
-      z-index:2;
-      color:#535d59;
-      font-size:11px;
-      letter-spacing:.16em;
+    .asset-kicker{
+      color:#69736f;
+      font-size:9px;
+      font-weight:700;
+      letter-spacing:.15em;
       text-transform:uppercase;
-      text-align:center;
-      line-height:1.5;
+    }
+    .asset-name{
+      color:#d9dfdc;
+      font-size:15px;
+      font-weight:600;
+      letter-spacing:-.02em;
+    }
+    .asset-line{
+      height:1px;
+      width:100%;
+      background:linear-gradient(90deg,var(--teal),transparent);
+      opacity:.8;
+    }
+    .asset-tile.orange .asset-line{
+      background:linear-gradient(90deg,var(--orange),transparent);
     }
 
     /* PROCESS */
@@ -414,9 +433,103 @@
     }
     .process p{color:var(--muted);line-height:1.65;font-size:14px}
 
+
+    /* PROCESS JOURNEY */
+    .process-header{
+      display:grid;
+      grid-template-columns:minmax(0,.85fr) minmax(320px,.65fr);
+      gap:60px;
+      align-items:end;
+      margin-bottom:34px;
+    }
+    .process-header h2{
+      font-size:clamp(40px,4vw,64px);
+      line-height:1.04;
+      font-weight:500;
+      letter-spacing:-.045em;
+      margin:0;
+      max-width:700px;
+    }
+    .process-header p{
+      color:var(--muted);
+      line-height:1.7;
+      margin:0 0 6px;
+      max-width:560px;
+      justify-self:end;
+    }
+
+    .journey{
+      position:relative;
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:0;
+      margin-top:12px;
+      padding-top:30px;
+    }
+
+    .journey::before{
+      content:"";
+      position:absolute;
+      left:12.5%;
+      right:12.5%;
+      top:49px;
+      height:2px;
+      background:linear-gradient(90deg,var(--orange),#d8b84c 34%,#75bb82 67%,var(--teal));
+      opacity:.9;
+    }
+
+    .journey-step{
+      position:relative;
+      min-width:0;
+      padding:0 24px 0 0;
+      color:var(--text);
+    }
+    .journey-step + .journey-step{
+      padding-left:24px;
+    }
+
+    .journey-node{
+      position:relative;
+      z-index:2;
+      width:40px;
+      height:40px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:var(--bg);
+      border:2px solid currentColor;
+      box-shadow:0 0 0 7px rgba(5,7,6,1);
+      margin:0 0 22px;
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.08em;
+    }
+
+    .step-1{color:var(--orange)}
+    .step-2{color:#d8b84c}
+    .step-3{color:#75bb82}
+    .step-4{color:var(--teal)}
+
+    .journey-step h3{
+      color:var(--text);
+      font-size:27px;
+      line-height:1.1;
+      font-weight:600;
+      letter-spacing:-.035em;
+      margin-bottom:10px;
+    }
+
+    .journey-step p{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.6;
+      margin:0;
+      max-width:250px;
+    }
+
     /* CTA */
     .closing{
-      padding:112px 0 106px;
+      padding:82px 0 78px;
       text-align:center;
     }
     .closing h2{
@@ -493,23 +606,24 @@
 
     @media (max-width:980px){
       .shell{width:min(calc(100% - 32px),var(--max))}
-      .brand img{width:220px;height:54px}
-      .hero{min-height:650px}
+      .brand img{width:290px;height:62px}
+      .hero{min-height:600px}
       .hero-content{width:82vw}
-      .section-head,.collab-intro{grid-template-columns:1fr}
+      .section-head,.collab-intro,.process-header{grid-template-columns:1fr}
       .section-head p{justify-self:start}
       .collab-statement{position:static}
+      .process-header p{justify-self:start}
       .project{grid-template-columns:1fr}
       .project-visual{height:140px;border-left:0;border-top:1px solid var(--line)}
     }
 
     @media (max-width:720px){
       .nav{height:78px}
-      .brand img{width:178px;height:46px}
+      .brand img{width:225px;height:52px}
       .nav-actions{gap:14px}
       .nav .btn{display:none}
-      .hero{min-height:650px}
-      #waveCanvas{opacity:.44}
+      .hero{min-height:600px}
+      #waveCanvas{opacity:.70}
       .hero::after{
         background:linear-gradient(180deg,rgba(5,7,6,.7),rgba(5,7,6,.92) 70%,var(--bg));
       }
@@ -527,6 +641,35 @@
       .section-head{gap:22px;margin-bottom:36px}
       .project{padding:26px}
       .project-logo{max-width:220px}
+      .journey{
+        display:grid;
+        grid-template-columns:1fr;
+        gap:0;
+        margin-top:28px;
+        padding:0 0 0 28px;
+      }
+      .journey::before{
+        left:18px;
+        right:auto;
+        top:20px;
+        bottom:20px;
+        width:2px;
+        height:auto;
+      }
+      .journey-step,
+      .journey-step + .journey-step{
+        padding:0 0 34px 24px;
+      }
+      .journey-node{
+        position:absolute;
+        left:-28px;
+        top:0;
+        width:36px;
+        height:36px;
+        margin:0;
+        box-shadow:0 0 0 6px rgba(5,7,6,1);
+      }
+      .journey-step h3{padding-top:3px}
       .process-grid{grid-template-columns:1fr}
       .process,.process+.process{padding:28px 0;border-left:0;border-bottom:1px solid var(--line)}
       .closing{padding:82px 0}
@@ -581,9 +724,9 @@
           </h1>
 
           <p class="hero-copy"
-             data-en="We help ambitious brands grow through premium content, paid media, audience strategy and actionable data."
-             data-es="Ayudamos a marcas ambiciosas a crecer con contenido premium, pauta digital, estrategia de audiencias y datos accionables.">
-            We help ambitious brands grow through premium content, paid media, audience strategy and actionable data.
+             data-en="Strategy, content, media and data — orchestrated to turn attention into lasting audience relationships."
+             data-es="Estrategia, contenido, medios y datos — orquestados para convertir atención en vínculos duraderos con las audiencias.">
+            Strategy, content, media and data — orchestrated to turn attention into lasting audience relationships.
           </p>
 
           <div class="hero-actions">
@@ -606,14 +749,14 @@
         <div class="section-head">
           <div>
             <div class="eyebrow" data-en="What we do" data-es="Qué hacemos">What we do</div>
-            <h2 data-en="Four capabilities. One connected strategy."
-                data-es="Cuatro capacidades. Una estrategia conectada.">
-              Four capabilities. One connected strategy.
+            <h2 data-en="Strategy, content, media and data. Built to work together."
+                data-es="Estrategia, contenido, medios y datos. Pensados para trabajar juntos.">
+              Strategy, content, media and data. Built to work together.
             </h2>
           </div>
-          <p data-en="We combine editorial thinking, creative production, paid distribution and measurement so every channel supports the same business objective."
-             data-es="Combinamos mirada editorial, producción creativa, distribución paga y medición para que cada canal responda al mismo objetivo de negocio.">
-            We combine editorial thinking, creative production, paid distribution and measurement so every channel supports the same business objective.
+          <p data-en="No isolated tactics. We connect the pieces so each channel strengthens the next."
+             data-es="Nada de acciones aisladas. Conectamos las piezas para que cada canal potencie al siguiente.">
+            No isolated tactics. We connect the pieces so each channel strengthens the next.
           </p>
         </div>
 
@@ -677,9 +820,9 @@
               data-es="Trabajamos con organizaciones que generan impacto real.">
             We work with organizations that generate real impact.
           </h2>
-          <p data-en="Instead of invented case-study numbers, we show the kind of work we actually do and the disciplines involved in each collaboration."
-             data-es="En lugar de inventar métricas de casos de éxito, mostramos el trabajo que efectivamente hacemos y las disciplinas que intervienen en cada colaboración.">
-            Instead of invented case-study numbers, we show the kind of work we actually do and the disciplines involved in each collaboration.
+          <p data-en="Long-term work across editorial strategy, audience development, content, paid media and measurement."
+             data-es="Trabajo sostenido en estrategia editorial, desarrollo de audiencias, contenido, pauta y medición.">
+            Long-term work across editorial strategy, audience development, content, paid media and measurement.
           </p>
         </div>
 
@@ -702,10 +845,16 @@
                 <span class="chip">Reporting</span>
               </div>
             </div>
-            <div class="project-visual" aria-hidden="true">
-              <div class="project-mark" data-en="Real project assets can be added here later"
-                   data-es="Más adelante podemos sumar piezas reales del proyecto">
-                Real project assets<br>can be added here later
+            <div class="project-visual" aria-label="QuePasa deliverables">
+              <div class="asset-tile">
+                <span class="asset-kicker" data-en="Deliverable" data-es="Entregable">Deliverable</span>
+                <span class="asset-name" data-en="Newsletter strategy & editions" data-es="Estrategia y ediciones de newsletter">Newsletter strategy & editions</span>
+                <span class="asset-line"></span>
+              </div>
+              <div class="asset-tile orange">
+                <span class="asset-kicker" data-en="Deliverable" data-es="Entregable">Deliverable</span>
+                <span class="asset-name" data-en="Performance reports & paid media" data-es="Reportes de performance y pauta">Performance reports & paid media</span>
+                <span class="asset-line"></span>
               </div>
             </div>
           </article>
@@ -728,10 +877,16 @@
                 <span class="chip">Audience</span>
               </div>
             </div>
-            <div class="project-visual" aria-hidden="true">
-              <div class="project-mark" data-en="Real project assets can be added here later"
-                   data-es="Más adelante podemos sumar piezas reales del proyecto">
-                Real project assets<br>can be added here later
+            <div class="project-visual" aria-label="Tierra Viva deliverables">
+              <div class="asset-tile">
+                <span class="asset-kicker" data-en="Deliverable" data-es="Entregable">Deliverable</span>
+                <span class="asset-name" data-en="Audiovisual & editorial content" data-es="Contenido audiovisual y editorial">Audiovisual & editorial content</span>
+                <span class="asset-line"></span>
+              </div>
+              <div class="asset-tile orange">
+                <span class="asset-kicker" data-en="Deliverable" data-es="Entregable">Deliverable</span>
+                <span class="asset-name" data-en="Campaign assets & digital communication" data-es="Piezas de campaña y comunicación digital">Campaign assets & digital communication</span>
+                <span class="asset-line"></span>
               </div>
             </div>
           </article>
@@ -739,45 +894,56 @@
       </div>
     </section>
 
-    <section class="content-section">
+    <section class="content-section process-section">
       <div class="shell">
-        <div class="section-head">
+        <div class="process-header">
           <div>
             <div class="eyebrow" data-en="How we work" data-es="Cómo trabajamos">How we work</div>
-            <h2 data-en="Clear thinking before more output."
-                data-es="Primero claridad. Después, ejecución.">
-              Clear thinking before more output.
+            <h2 data-en="From first signal to measurable progress."
+                data-es="De la primera señal al progreso medible.">
+              From first signal to measurable progress.
             </h2>
           </div>
-          <p data-en="We start with the business problem, build the right system and then measure what deserves to be improved."
-             data-es="Partimos del problema de negocio, construimos el sistema adecuado y después medimos qué merece ser mejorado.">
-            We start with the business problem, build the right system and then measure what deserves to be improved.
+          <p data-en="A simple path: understand the challenge, shape the right response, put it into motion and learn from the result."
+             data-es="Un camino simple: entender el desafío, diseñar la respuesta correcta, ponerla en marcha y aprender del resultado.">
+            A simple path: understand the challenge, shape the right response, put it into motion and learn from the result.
           </p>
         </div>
 
-        <div class="process-grid">
-          <article class="process">
-            <div class="process-num">01 / DISCOVER</div>
+        <div class="journey">
+          <article class="journey-step step-1">
+            <div class="journey-node">01</div>
             <h3 data-en="Understand" data-es="Entender">Understand</h3>
-            <p data-en="Objectives, audience, channels, constraints and current performance."
-               data-es="Objetivos, audiencia, canales, restricciones y rendimiento actual.">
-              Objectives, audience, channels, constraints and current performance.
+            <p data-en="Business, audience, context and the real opportunity."
+               data-es="Negocio, audiencia, contexto y oportunidad real.">
+              Business, audience, context and the real opportunity.
             </p>
           </article>
-          <article class="process">
-            <div class="process-num">02 / BUILD</div>
-            <h3 data-en="Create" data-es="Crear">Create</h3>
-            <p data-en="Strategy becomes content, campaigns, audience products and measurement."
-               data-es="La estrategia se convierte en contenido, campañas, productos de audiencia y medición.">
-              Strategy becomes content, campaigns, audience products and measurement.
+
+          <article class="journey-step step-2">
+            <div class="journey-node">02</div>
+            <h3 data-en="Shape" data-es="Diseñar">Shape</h3>
+            <p data-en="The right combination of message, channels, content and media."
+               data-es="La combinación adecuada de mensaje, canales, contenido y medios.">
+              The right combination of message, channels, content and media.
             </p>
           </article>
-          <article class="process">
-            <div class="process-num">03 / IMPROVE</div>
-            <h3 data-en="Measure" data-es="Medir">Measure</h3>
-            <p data-en="We read the signal, identify opportunities and refine the work continuously."
-               data-es="Leemos la señal, detectamos oportunidades y refinamos el trabajo de forma continua.">
-              We read the signal, identify opportunities and refine the work continuously.
+
+          <article class="journey-step step-3">
+            <div class="journey-node">03</div>
+            <h3 data-en="Launch" data-es="Activar">Launch</h3>
+            <p data-en="Production and execution with every piece aligned."
+               data-es="Producción y ejecución con cada pieza alineada.">
+              Production and execution with every piece aligned.
+            </p>
+          </article>
+
+          <article class="journey-step step-4">
+            <div class="journey-node">04</div>
+            <h3 data-en="Learn" data-es="Aprender">Learn</h3>
+            <p data-en="Measure, read the signal and improve the next move."
+               data-es="Medir, leer la señal y mejorar el siguiente movimiento.">
+              Measure, read the signal and improve the next move.
             </p>
           </article>
         </div>
@@ -787,13 +953,13 @@
     <section class="closing" id="contact">
       <div class="shell">
         <div class="eyebrow" style="justify-content:center" data-en="Let's talk" data-es="Conversemos">Let's talk</div>
-        <h2 data-en="Have a communication problem worth solving?"
-            data-es="¿Tenés un problema de comunicación que valga la pena resolver?">
-          Have a communication problem worth solving?
+        <h2 data-en="Bring us the challenge. Let’s shape the next move."
+            data-es="Traé el desafío. Pensemos el próximo movimiento.">
+          Bring us the challenge. Let’s shape the next move.
         </h2>
-        <p data-en="Book a 30-minute conversation. Tell us what you're trying to achieve and we'll start by understanding the problem — not by selling you a package."
-           data-es="Agendá una conversación de 30 minutos. Contanos qué querés lograr y empecemos por entender el problema, no por venderte un paquete.">
-          Book a 30-minute conversation. Tell us what you're trying to achieve and we'll start by understanding the problem — not by selling you a package.
+        <p data-en="Tell us what you’re trying to build, improve or understand. We’ll use the first 30 minutes to find the most useful way forward."
+           data-es="Contanos qué querés construir, mejorar o entender. Usemos los primeros 30 minutos para encontrar el camino más útil.">
+          Tell us what you’re trying to build, improve or understand. We’ll use the first 30 minutes to find the most useful way forward.
         </p>
         <div class="closing-actions">
           <a class="btn btn-primary focus" href="https://calendar.app.google/niWXG4odzZ9zTqN68" target="_blank" rel="noopener noreferrer"
@@ -996,7 +1162,7 @@
       }
     }
 
-    // Abstract particle-wave background: lightweight, original and self-hosted in code.
+    // Abstract particle-wave background: more visible, still restrained.
     const canvas = document.getElementById('waveCanvas');
     const ctx = canvas.getContext('2d', { alpha:true });
     let w=0,h=0,dpr=1,t=0;
@@ -1014,51 +1180,63 @@
     function drawWave(){
       if(reduced) return;
       ctx.clearRect(0,0,w,h);
-
-      const startX = Math.max(w*.34, 320);
-      const rows = 28;
-      const cols = 78;
+      const startX = Math.max(w*.24, 240);
+      const rows = 42;
+      const cols = 108;
 
       for(let r=0;r<rows;r++){
         const rn = r/(rows-1);
         for(let c=0;c<cols;c++){
           const cn = c/(cols-1);
-          const x = startX + cn*(w-startX+90);
-          const baseY = h*.45 + (rn-.5)*h*.48;
-          const amplitude = (55 + rn*55);
+          const x = startX + cn*(w-startX+110);
+          const baseY = h*.48 + (rn-.5)*h*.58;
+          const amp = 58 + rn*62;
           const y =
             baseY +
-            Math.sin(cn*7.8 + t*0.7 + rn*3.2)*amplitude*(.20 + cn*.55) +
-            Math.cos(cn*3.3 - t*.36 + rn*5.7)*22;
+            Math.sin(cn*8.7 + t*.82 + rn*4.0)*amp*(.22 + cn*.52) +
+            Math.cos(cn*4.1 - t*.42 + rn*5.3)*28;
 
-          const perspective = .18 + cn*.82;
-          const radius = .55 + perspective*1.45;
-          const alpha = (.055 + perspective*.22) * (1 - Math.abs(rn-.5)*.75);
+          const perspective = .2 + cn*.8;
+          const radius = .65 + perspective*1.75;
+          const centerWeight = 1 - Math.min(1, Math.abs(rn-.5)*1.75);
+          const alpha = (.06 + perspective*.28) * (.45 + centerWeight*.55);
+
+          const colorMix = (r + c) % 17;
+          let fill = `rgba(226,234,231,${alpha})`;
+          if(colorMix === 0) fill = `rgba(36,212,195,${Math.min(.42,alpha*1.35)})`;
+          if(colorMix === 8) fill = `rgba(255,106,0,${Math.min(.30,alpha*1.05)})`;
 
           ctx.beginPath();
           ctx.arc(x,y,radius,0,Math.PI*2);
-          ctx.fillStyle = `rgba(225,235,231,${alpha})`;
+          ctx.fillStyle = fill;
           ctx.fill();
         }
       }
 
-      // one restrained teal light trace
-      ctx.beginPath();
-      for(let c=0;c<=100;c++){
-        const cn=c/100;
-        const x=startX + cn*(w-startX+80);
-        const y=h*.51 + Math.sin(cn*8 + t*.55)*46 + Math.cos(cn*3.1-t*.22)*12;
-        if(c===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
-      }
-      const grad=ctx.createLinearGradient(startX,0,w,0);
-      grad.addColorStop(0,'rgba(36,212,195,0)');
-      grad.addColorStop(.55,'rgba(36,212,195,.10)');
-      grad.addColorStop(1,'rgba(36,212,195,.03)');
-      ctx.strokeStyle=grad;
-      ctx.lineWidth=1;
-      ctx.stroke();
+      const traces = [
+        {offset:0, colorA:'rgba(36,212,195,0)', colorB:'rgba(36,212,195,.30)'},
+        {offset:34, colorA:'rgba(255,106,0,0)', colorB:'rgba(255,106,0,.20)'},
+        {offset:-28, colorA:'rgba(255,255,255,0)', colorB:'rgba(255,255,255,.14)'}
+      ];
 
-      t += .012;
+      traces.forEach((trace,idx)=>{
+        ctx.beginPath();
+        for(let c=0;c<=120;c++){
+          const cn=c/120;
+          const x=startX + cn*(w-startX+100);
+          const y=h*.5 + trace.offset + Math.sin(cn*(7.7+idx*.3)+t*(.55+idx*.07))*52 + Math.cos(cn*3.4-t*.25)*15;
+          if(c===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+        }
+        const grad=ctx.createLinearGradient(startX,0,w,0);
+        grad.addColorStop(0,trace.colorA);
+        grad.addColorStop(.5,trace.colorB);
+        grad.addColorStop(1,'rgba(255,255,255,.02)');
+        ctx.strokeStyle=grad;
+        ctx.lineWidth=idx===0?1.25:1;
+        ctx.stroke();
+      });
+
+      t += .014;
       requestAnimationFrame(drawWave);
     }
 
