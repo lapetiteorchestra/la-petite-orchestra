@@ -1,22 +1,31 @@
-# La Petite Orchestra — Web v2
+# La Petite Orchestra — v4
 
-Files:
+This version follows the approved minimalist direction.
+
+## Included
 - `index.html`
-- `lpo-logo.png`
+- `logo-lpo.svg`
+- `logo-quepasa.png`
+- `logo-tierraviva.png`
 
-## Publish through GitHub
-1. Replace the current `index.html` with this one.
-2. Upload `lpo-logo.png` to the repository root.
-3. Commit the changes.
-4. Vercel should redeploy automatically.
+## Main changes
+- Minimalist premium layout.
+- Larger SVG logo.
+- Abstract animated particle-wave hero built in Canvas (no stock footage or fake client imagery).
+- Bilingual EN/ES.
+- Real QuePasa and Tierra Viva logos.
+- Current Collaborations instead of invented case-study metrics.
+- Service detail modals.
+- Google Calendar CTA.
+- GA4 event tracking for booking, services, WhatsApp, email and scroll.
+- Mobile and reduced-motion support.
 
-## Booking URL
-https://calendar.app.google/niWXG4odzZ9zTqN68
+## To test
+Replace/add the four files in your local repository and open `index.html` with Live Server.
 
-## GA4 events included
-- `book_call`
-- `view_services`
-- `service_open`
-- `contact_email`
-- `contact_whatsapp`
-- `scroll_75`
+## To publish
+```bash
+git add .
+git commit -m "Redesign website with minimalist direction"
+git push
+```

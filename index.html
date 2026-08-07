@@ -1,674 +1,1095 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Petite Orchestra | Content, Paid Media & Analytics</title>
-    <meta name="description" content="La Petite Orchestra helps brands grow through content strategy, paid media, audience development and actionable analytics. Book a strategy call.">
-    <link rel="canonical" href="https://lapetiteorchestra.com/">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://lapetiteorchestra.com/">
-    <meta property="og:title" content="La Petite Orchestra | Content, Paid Media & Analytics">
-    <meta property="og:description" content="We orchestrate audiences through premium content, paid media and data-driven strategy.">
-    <meta property="og:image" content="https://lapetiteorchestra.com/lpo-logo.png">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="La Petite Orchestra | Content, Paid Media & Analytics">
-    <meta name="twitter:description" content="We orchestrate audiences through premium content, paid media and data-driven strategy.">
-    <meta name="theme-color" content="#080d0c">
-    <link rel="icon" type="image/png" href="lpo-logo.png">
-    <!-- Tailwind CSS v4 CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- Alpine.js para Modales e Idioma -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <!-- Google Analytics -->
-   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ST3N6WPY8C"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>La Petite Orchestra | Creative Marketing, Paid Media & Audience Strategy</title>
+  <meta name="description" content="La Petite Orchestra is a creative marketing and communication studio focused on content, audience strategy, paid media and actionable analytics.">
+  <link rel="canonical" href="https://lapetiteorchestra.com/">
+  <link rel="icon" href="logo-lpo.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#050706">
 
-  gtag('config', 'G-ST3N6WPY8C');
-</script>
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lapetiteorchestra.com/">
+  <meta property="og:title" content="La Petite Orchestra">
+  <meta property="og:description" content="We orchestrate audiences through content, paid media, audience strategy and actionable data.">
+  <meta property="og:image" content="https://lapetiteorchestra.com/logo-lpo.svg">
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap');
-        
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #080d0c;
-            color: #ffffff;
-            overflow-x: hidden;
-        }
-        h1, h2, h3, h4, .font-display {
-            font-family: 'Syne', sans-serif;
-        }
-        [x-cloak] { display: none !important; }
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ST3N6WPY8C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ST3N6WPY8C');
+  </script>
 
-        /* CONTROL DE ESCALA Y CENTRADO */
-        .hero-title {
-            /* Mínimo: 26px (Mobile), Fluido: 7.5vw, Máximo: 74px (Desktop) */
-            font-size: clamp(26px, 7.5vw, 74px) !important;
-            line-height: 1.1 !important;
-            letter-spacing: -0.04em !important;
-            width: 100%;
-        }
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap');
 
-        .hero-title .no-split {
-            display: block;
-            white-space: nowrap !important;
-            width: fit-content;
-        }
+    :root{
+      --bg:#050706;
+      --panel:#090c0b;
+      --panel-2:#0d1110;
+      --line:#202724;
+      --muted:#9aa39f;
+      --text:#f4f6f5;
+      --teal:#24d4c3;
+      --orange:#ff6a00;
+      --green:#9ac24d;
+      --max:1400px;
+    }
 
-        /* ANIMACIÓN DE GRADIENTE FLUIDO */
-        @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        .animated-gradient {
-            background-size: 200% auto;
-            animation: gradientMove 6s linear infinite;
-        }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      -webkit-font-smoothing:antialiased;
+      overflow-x:hidden;
+    }
 
-        /* ANIMACIÓN PULSO SUAVE PARA EL BADGE */
-        @keyframes softPulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.03); opacity: 0.9; }
-        }
-        .badge-pulse {
-            animation: softPulse 3s ease-in-out infinite;
-        }
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    img{max-width:100%;display:block}
+    [hidden]{display:none!important}
 
-        html { scroll-behavior: smooth; }
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-        .logo-lockup {
-            width: clamp(180px, 23vw, 310px);
-            height: 54px;
-            object-fit: contain;
-            object-position: left center;
-        }
-        .eyebrow {
-            font-size: 0.72rem;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            font-weight: 800;
-        }
-        .section-kicker {
-            color: #f97316;
-            font-weight: 800;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            font-size: 0.75rem;
-        }
-        .focus-ring:focus-visible {
-            outline: 3px solid #2dd4bf;
-            outline-offset: 4px;
-        }
-        @media (max-width: 640px) {
-            .logo-lockup { width: 178px; height: 44px; }
-        }
-    </style>
+    .shell{
+      width:min(calc(100% - 48px),var(--max));
+      margin-inline:auto;
+    }
+
+    .nav{
+      height:92px;
+      position:sticky;
+      top:0;
+      z-index:50;
+      display:flex;
+      align-items:center;
+      background:rgba(5,7,6,.86);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .nav-inner{
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand img{
+      width:286px;
+      height:62px;
+      object-fit:contain;
+      object-position:left center;
+    }
+
+    .nav-actions{display:flex;align-items:center;gap:26px}
+    .lang{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:#737a77;
+      font-size:12px;
+      letter-spacing:.12em;
+      font-weight:700;
+    }
+    .lang button{
+      border:0;
+      background:none;
+      color:inherit;
+      cursor:pointer;
+      padding:6px 2px;
+    }
+    .lang button.active{color:var(--teal)}
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
+      min-height:50px;
+      padding:0 24px;
+      border:1px solid rgba(255,255,255,.24);
+      color:#fff;
+      background:transparent;
+      font-size:13px;
+      font-weight:600;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      transition:.22s ease;
+      cursor:pointer;
+    }
+    .btn:hover{border-color:var(--teal);transform:translateY(-1px)}
+    .btn-primary{
+      background:var(--orange);
+      border-color:var(--orange);
+    }
+    .btn-primary:hover{background:#ff7a19;border-color:#ff7a19}
+    .btn-ghost{background:rgba(5,7,6,.34)}
+
+    /* HERO */
+    .hero{
+      min-height:720px;
+      position:relative;
+      overflow:hidden;
+      border-bottom:1px solid rgba(255,255,255,.07);
+      display:flex;
+      align-items:center;
+    }
+
+    #waveCanvas{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      z-index:0;
+      opacity:.74;
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:1;
+      background:
+        linear-gradient(90deg, rgba(5,7,6,.97) 0%, rgba(5,7,6,.88) 31%, rgba(5,7,6,.42) 57%, rgba(5,7,6,.08) 100%),
+        linear-gradient(180deg, rgba(5,7,6,.08), rgba(5,7,6,.48));
+      pointer-events:none;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+      width:min(760px,68vw);
+      padding:86px 0 92px;
+    }
+
+    .eyebrow{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:28px;
+      font-size:11px;
+      font-weight:600;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:#7f8984;
+    }
+    .eyebrow::before{
+      content:"/";
+      color:var(--orange);
+      font-size:20px;
+      font-weight:700;
+    }
+    .eyebrow.teal{color:var(--teal)}
+
+    h1,h2,h3,p{margin-top:0}
+    .hero h1{
+      margin-bottom:26px;
+      font-family:Syne,sans-serif;
+      font-size:clamp(52px,6.2vw,96px);
+      line-height:.91;
+      letter-spacing:-.055em;
+      text-transform:uppercase;
+      max-width:940px;
+    }
+    .hero h1 .gradient{
+      display:block;
+      width:max-content;
+      max-width:100%;
+      background:linear-gradient(90deg,var(--orange),#d9ae5a 34%,#7cbf8a 65%,var(--teal));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    .hero-copy{
+      max-width:660px;
+      margin-bottom:34px;
+      color:#b0b7b4;
+      font-size:17px;
+      line-height:1.68;
+    }
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+
+    /* SECTIONS */
+    section.content-section{
+      padding:96px 0;
+      border-bottom:1px solid rgba(255,255,255,.07);
+    }
+
+    .section-head{
+      display:grid;
+      grid-template-columns:minmax(240px,.7fr) minmax(0,1.3fr);
+      gap:60px;
+      margin-bottom:52px;
+      align-items:end;
+    }
+    .section-head h2{
+      font-family:Inter,sans-serif;
+      font-size:clamp(38px,4.1vw,66px);
+      line-height:1.02;
+      letter-spacing:-.045em;
+      font-weight:500;
+      margin:0;
+    }
+    .section-head p{
+      color:var(--muted);
+      line-height:1.7;
+      max-width:650px;
+      justify-self:end;
+      margin-bottom:4px;
+    }
+
+    /* SERVICES */
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      border-top:1px solid var(--line);
+    }
+    .service{
+      min-width:0;
+      padding:30px 8px 30px 0;
+      border-bottom:1px solid var(--line);
+      display:grid;
+      grid-template-columns:56px 1fr auto;
+      gap:20px;
+      align-items:start;
+      cursor:pointer;
+      transition:.2s ease;
+    }
+    .service:nth-child(odd){padding-right:34px}
+    .service:nth-child(even){padding-left:34px;border-left:1px solid var(--line)}
+    .service:hover{background:rgba(255,255,255,.015)}
+    .service-num{
+      color:#59625e;
+      font-size:12px;
+      letter-spacing:.12em;
+      padding-top:5px;
+    }
+    .service h3{
+      font-family:Inter,sans-serif;
+      font-size:23px;
+      line-height:1.25;
+      letter-spacing:-.025em;
+      margin-bottom:10px;
+      font-weight:600;
+      overflow-wrap:anywhere;
+    }
+    .service p{
+      color:#8f9894;
+      font-size:14px;
+      line-height:1.65;
+      margin:0;
+    }
+    .service-arrow{
+      color:var(--teal);
+      font-size:25px;
+      padding-top:2px;
+    }
+
+    /* COLLABORATIONS */
+    .collab-intro{
+      display:grid;
+      grid-template-columns:.72fr 1.28fr;
+      gap:60px;
+      align-items:start;
+    }
+    .collab-statement{
+      position:sticky;
+      top:130px;
+    }
+    .collab-statement h2{
+      font-size:clamp(38px,4vw,64px);
+      font-weight:400;
+      line-height:1.12;
+      letter-spacing:-.045em;
+      margin-bottom:24px;
+    }
+    .collab-statement p{
+      color:var(--muted);
+      max-width:430px;
+      line-height:1.7;
+    }
+
+    .collab-list{display:grid;gap:18px}
+    .project{
+      min-width:0;
+      border:1px solid var(--line);
+      background:linear-gradient(145deg,rgba(255,255,255,.018),rgba(255,255,255,.005));
+      padding:36px;
+      display:grid;
+      grid-template-columns:minmax(0,1fr) 240px;
+      gap:34px;
+      align-items:center;
+      transition:.24s ease;
+    }
+    .project:hover{border-color:#343d39;transform:translateY(-2px)}
+    .project-logo{
+      height:62px;
+      max-width:270px;
+      object-fit:contain;
+      object-position:left center;
+      margin-bottom:26px;
+    }
+    .project-logo.tierra{height:92px}
+    .project h3{
+      font-size:26px;
+      line-height:1.2;
+      font-weight:500;
+      letter-spacing:-.035em;
+      margin-bottom:12px;
+    }
+    .project p{
+      color:var(--muted);
+      line-height:1.68;
+      margin-bottom:24px;
+      max-width:640px;
+    }
+    .chips{display:flex;gap:8px;flex-wrap:wrap}
+    .chip{
+      border:1px solid #2c3431;
+      color:#aeb6b2;
+      padding:7px 10px;
+      font-size:10px;
+      line-height:1;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+    }
+    .project-visual{
+      height:210px;
+      border-left:1px solid var(--line);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .project-visual::before,
+    .project-visual::after{
+      content:"";
+      position:absolute;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:50%;
+    }
+    .project-visual::before{width:170px;height:170px}
+    .project-visual::after{width:110px;height:110px}
+    .project-mark{
+      position:relative;
+      z-index:2;
+      color:#535d59;
+      font-size:11px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      text-align:center;
+      line-height:1.5;
+    }
+
+    /* PROCESS */
+    .process-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      border-top:1px solid var(--line);
+    }
+    .process{
+      padding:34px 36px 8px 0;
+      min-height:210px;
+    }
+    .process + .process{padding-left:36px;border-left:1px solid var(--line)}
+    .process-num{
+      color:var(--orange);
+      font-size:11px;
+      letter-spacing:.14em;
+      margin-bottom:40px;
+    }
+    .process h3{
+      font-family:Inter,sans-serif;
+      font-size:24px;
+      font-weight:500;
+      letter-spacing:-.03em;
+      margin-bottom:10px;
+    }
+    .process p{color:var(--muted);line-height:1.65;font-size:14px}
+
+    /* CTA */
+    .closing{
+      padding:112px 0 106px;
+      text-align:center;
+    }
+    .closing h2{
+      font-family:Inter,sans-serif;
+      font-weight:500;
+      font-size:clamp(42px,5vw,78px);
+      letter-spacing:-.055em;
+      line-height:1.02;
+      max-width:980px;
+      margin:0 auto 24px;
+    }
+    .closing p{
+      color:var(--muted);
+      max-width:670px;
+      margin:0 auto 34px;
+      line-height:1.7;
+    }
+    .closing-actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+
+    footer{
+      border-top:1px solid rgba(255,255,255,.07);
+      padding:28px 0;
+      color:#68716d;
+      font-size:12px;
+    }
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+    }
+    .footer-links{display:flex;gap:24px}
+    .footer-links a:hover{color:#fff}
+
+    /* MODAL */
+    .modal-backdrop{
+      position:fixed;
+      inset:0;
+      z-index:100;
+      background:rgba(0,0,0,.78);
+      backdrop-filter:blur(12px);
+      display:grid;
+      place-items:center;
+      padding:24px;
+    }
+    .modal{
+      width:min(680px,100%);
+      border:1px solid #303734;
+      background:#0b0f0d;
+      padding:36px;
+      box-shadow:0 30px 100px rgba(0,0,0,.5);
+    }
+    .modal-head{display:flex;justify-content:space-between;gap:30px;margin-bottom:28px}
+    .modal h3{
+      font-family:Inter,sans-serif;
+      font-weight:600;
+      letter-spacing:-.035em;
+      font-size:30px;
+      line-height:1.18;
+      margin:0;
+    }
+    .modal-close{
+      border:0;background:none;color:#858d89;font-size:28px;cursor:pointer;line-height:1;
+    }
+    .modal ul{list-style:none;padding:0;margin:0;display:grid;gap:18px}
+    .modal li{color:#aeb5b2;line-height:1.65;display:grid;grid-template-columns:16px 1fr;gap:12px}
+    .modal li::before{content:"+";color:var(--teal);font-weight:700}
+    .modal-footer{margin-top:30px;display:flex;gap:12px;flex-wrap:wrap}
+
+    .focus:focus-visible{
+      outline:2px solid var(--teal);
+      outline-offset:4px;
+    }
+
+    @media (max-width:980px){
+      .shell{width:min(calc(100% - 32px),var(--max))}
+      .brand img{width:220px;height:54px}
+      .hero{min-height:650px}
+      .hero-content{width:82vw}
+      .section-head,.collab-intro{grid-template-columns:1fr}
+      .section-head p{justify-self:start}
+      .collab-statement{position:static}
+      .project{grid-template-columns:1fr}
+      .project-visual{height:140px;border-left:0;border-top:1px solid var(--line)}
+    }
+
+    @media (max-width:720px){
+      .nav{height:78px}
+      .brand img{width:178px;height:46px}
+      .nav-actions{gap:14px}
+      .nav .btn{display:none}
+      .hero{min-height:650px}
+      #waveCanvas{opacity:.44}
+      .hero::after{
+        background:linear-gradient(180deg,rgba(5,7,6,.7),rgba(5,7,6,.92) 70%,var(--bg));
+      }
+      .hero-content{width:100%;padding:72px 0}
+      .hero h1{font-size:clamp(45px,14.2vw,70px)}
+      .hero-copy{font-size:15px}
+      .hero-actions{flex-direction:column;align-items:stretch}
+      .hero-actions .btn{width:100%}
+      section.content-section{padding:72px 0}
+      .services-grid{grid-template-columns:1fr}
+      .service,.service:nth-child(odd),.service:nth-child(even){
+        padding:26px 0;
+        border-left:0;
+      }
+      .section-head{gap:22px;margin-bottom:36px}
+      .project{padding:26px}
+      .project-logo{max-width:220px}
+      .process-grid{grid-template-columns:1fr}
+      .process,.process+.process{padding:28px 0;border-left:0;border-bottom:1px solid var(--line)}
+      .closing{padding:82px 0}
+      .footer-inner{flex-direction:column;align-items:flex-start}
+    }
+
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      #waveCanvas{display:none}
+      .hero{background:
+        radial-gradient(circle at 75% 40%,rgba(255,255,255,.08),transparent 38%),
+        var(--bg);
+      }
+      *{transition:none!important}
+    }
+  </style>
 </head>
-<body class="antialiased selection:bg-teal-400 selection:text-black"
-      x-data="{ lang: localStorage.getItem('lpoLang') || 'en', openModal: null }"
-      x-init="$watch('lang', value => localStorage.setItem('lpoLang', value))">
 
-    <!-- NAVBAR RESPONSIVE -->
-    <nav class="sticky top-0 z-40 w-full bg-black/90 backdrop-blur-md border-b-2 border-zinc-900 px-4 md:px-6 py-3">
-        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
-            <a href="#" class="group min-w-0 focus-ring" aria-label="La Petite Orchestra — Home">
-                <img src="lpo-logo.png" alt="La Petite Orchestra" class="logo-lockup transition-opacity group-hover:opacity-80">
+<body>
+  <nav class="nav">
+    <div class="shell nav-inner">
+      <a class="brand focus" href="#" aria-label="La Petite Orchestra home">
+        <img src="logo-lpo.svg" alt="La Petite Orchestra">
+      </a>
+
+      <div class="nav-actions">
+        <div class="lang" aria-label="Language selector">
+          <button id="langEn" class="active focus" type="button">EN</button>
+          <button id="langEs" class="focus" type="button">ES</button>
+        </div>
+        <a class="btn focus" href="https://calendar.app.google/niWXG4odzZ9zTqN68" target="_blank" rel="noopener noreferrer"
+           onclick="trackLPO('book_call','navbar')">
+          <span data-en="Book a call" data-es="Agendar reunión">Book a call</span>
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <canvas id="waveCanvas" aria-hidden="true"></canvas>
+      <div class="shell">
+        <div class="hero-content">
+          <div class="eyebrow teal" data-en="Creative marketing & communication" data-es="Marketing creativo & comunicación">
+            Creative marketing & communication
+          </div>
+
+          <h1>
+            <span data-en="We orchestrate" data-es="Orquestamos">We orchestrate</span>
+            <span class="gradient" data-en="audiences" data-es="audiencias">audiences</span>
+          </h1>
+
+          <p class="hero-copy"
+             data-en="We help ambitious brands grow through premium content, paid media, audience strategy and actionable data."
+             data-es="Ayudamos a marcas ambiciosas a crecer con contenido premium, pauta digital, estrategia de audiencias y datos accionables.">
+            We help ambitious brands grow through premium content, paid media, audience strategy and actionable data.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary focus" href="https://calendar.app.google/niWXG4odzZ9zTqN68" target="_blank" rel="noopener noreferrer"
+               onclick="trackLPO('book_call','hero')">
+              <span data-en="Book a strategy call" data-es="Agendar una reunión">Book a strategy call</span>
+              <span aria-hidden="true">→</span>
             </a>
-            
-            <div class="flex items-center gap-3 md:gap-6 flex-shrink-0">
-                <!-- SWITCH DE IDIOMA INTERACTIVO -->
-                <div class="flex bg-zinc-900 p-1 border border-zinc-800 rounded-sm text-[10px] md:text-xs font-bold">
-                    <button type="button" aria-label="View site in English" @click="lang = 'en'" :class="lang === 'en' ? 'bg-teal-400 text-black' : 'text-zinc-400 hover:text-white'" class="px-2 py-1 transition-all rounded-xs uppercase">EN</button>
-                    <button type="button" aria-label="Ver sitio en español" @click="lang = 'es'" :class="lang === 'es' ? 'bg-orange-500 text-white' : 'text-zinc-400 hover:text-white'" class="px-2 py-1 transition-all rounded-xs uppercase">ES</button>
-                </div>
-
-                <!-- BOTÓN DE CONTACTO -->
-                <a href="https://calendar.app.google/niWXG4odzZ9zTqN68" target="_blank" rel="noopener noreferrer" onclick="trackLPO('book_call', 'navbar')" class="focus-ring text-[10px] md:text-sm px-3 py-1.5 md:px-4 md:py-2 bg-orange-500 text-white font-bold uppercase tracking-wider rounded-sm hover:bg-teal-400 hover:text-black transition-all shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]">
-                    <span x-show="lang === 'en'">Book a call</span>
-                    <span x-show="lang === 'es'">Agendar reunión</span>
-                </a>
-            </div>
+            <a class="btn btn-ghost focus" href="#services" onclick="trackLPO('view_services','hero')">
+              <span data-en="Explore services" data-es="Explorar servicios">Explore services</span>
+              <span aria-hidden="true">↓</span>
+            </a>
+          </div>
         </div>
-    </nav>
-
-    <!-- HERO SECTION -->
-    <header class="relative bg-black min-h-[80vh] flex items-center justify-center px-4 py-12 border-b-2 border-zinc-900 w-full overflow-hidden">
-        <div class="w-full max-w-4xl mx-auto flex flex-col items-center justify-center text-center">
-            
-            <!-- Badge Animado -->
-            <span class="badge-pulse inline-block bg-zinc-950 text-teal-400 border border-teal-900 text-[9px] md:text-xs font-bold tracking-widest uppercase px-3 py-1.5 mb-6 md:mb-8 rounded-full max-w-full truncate">
-                ⚡ Creative Marketing & Communication
-            </span>
-            
-            <!-- Título Principal -->
-            <h1 class="hero-title font-black text-white uppercase mb-6 md:mb-8 flex flex-col items-center justify-center px-4">
-                <span class="no-split" x-show="lang === 'en'">WE ORCHESTRATE</span>
-                <span class="no-split" x-show="lang === 'es'">ORQUESTAMOS</span>
-                
-                <span class="no-split animated-gradient text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-teal-400 to-orange-500" x-show="lang === 'en'">
-                    AUDIENCES
-                </span>
-                <span class="no-split animated-gradient text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-teal-400 to-orange-500" x-show="lang === 'es'">
-                    AUDIENCIAS
-                </span>
-            </h1>
-            
-            <!-- Bajada de texto -->
-            <p class="text-xs sm:text-base md:text-lg lg:text-xl text-zinc-400 max-w-2xl mx-auto font-light leading-relaxed mb-8 md:mb-10 block px-4">
-                <span x-show="lang === 'en'">We help ambitious brands grow through premium content, paid media, audience strategy and actionable data.</span>
-                <span x-show="lang === 'es'">Ayudamos a marcas ambiciosas a crecer con contenido premium, pauta digital, estrategia de audiencias y datos accionables.</span>
-            </p>
-            
-            <!-- Acciones principales -->
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="https://calendar.app.google/niWXG4odzZ9zTqN68" target="_blank" rel="noopener noreferrer"
-                   onclick="trackLPO('book_call', 'hero')"
-                   class="focus-ring inline-block text-xs md:text-base font-bold bg-orange-500 text-white px-5 py-3 md:px-8 md:py-4 uppercase tracking-wider border-2 border-black shadow-[4px_4px_0px_0px_#2dd4bf] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all">
-                    <span x-show="lang === 'en'">Book a strategy call</span>
-                    <span x-show="lang === 'es'">Agendar una reunión</span>
-                </a>
-                <a href="#servicios"
-                   onclick="trackLPO('view_services', 'hero')"
-                   class="focus-ring inline-block text-xs md:text-base font-bold text-white px-5 py-3 md:px-7 md:py-4 uppercase tracking-wider border-2 border-zinc-700 hover:border-teal-400 hover:text-teal-400 transition-all">
-                    <span x-show="lang === 'en'">Explore services ↓</span>
-                    <span x-show="lang === 'es'">Explorar servicios ↓</span>
-                </a>
-            </div>
-        </div>
+      </div>
     </header>
 
-    <!-- SECCIÓN SERVICIOS -->
-    <section id="servicios" class="bg-zinc-950 py-20 px-4 md:px-6">
-        <div class="max-w-7xl mx-auto">
-            
-<div class="flex flex-col lg:flex-row lg:items-end justify-between mb-16 border-b-2 border-zinc-900 pb-8 gap-4">
-                <div class="text-left">
-                    <span class="text-orange-500 text-xs md:text-sm font-bold tracking-widest uppercase block mb-2">
-                        <span x-show="lang === 'en'">// WHAT WE DO</span>
-                        <span x-show="lang === 'es'">// QUÉ HACEMOS</span>
-                    </span>
-                    <h2 class="text-3xl md:text-6xl font-black uppercase tracking-tight text-white">
-                        <span x-show="lang === 'en'">OUR SERVICES</span>
-                        <span x-show="lang === 'es'">NUESTROS SERVICIOS</span>
-                    </h2>
-                </div>
-                <div class="text-left lg:text-right max-w-md">
-                    <p class="text-zinc-400 text-sm md:text-base leading-relaxed">
-                        <span x-show="lang === 'en'">Four connected capabilities, designed to turn attention into measurable growth. Explore each pillar.</span>
-                        <span x-show="lang === 'es'">Cuatro capacidades conectadas para convertir atención en crecimiento medible. Explorá cada pilar.</span>
-                    </p>
-                </div>
-            </div>
-
-            <!-- CARDS DE SERVICIO -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                
-                <!-- Card 1 -->
-                <div role="button" tabindex="0"
-                     @click="openModal = 1; trackLPO('service_open', 'newsletter')"
-                     @keydown.enter="openModal = 1; trackLPO('service_open', 'newsletter')"
-                     @keydown.space.prevent="openModal = 1; trackLPO('service_open', 'newsletter')"
-                     class="focus-ring group bg-black border-2 border-zinc-800 p-6 md:p-8 flex items-center justify-between cursor-pointer hover:border-teal-400 hover:bg-zinc-900/30 transition-all duration-300 transform hover:-translate-y-1.5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_#2dd4bf]">
-                    <h3 class="text-xl md:text-2xl lg:text-3xl font-bold uppercase tracking-tight text-white group-hover:text-teal-400 transition-colors text-left pr-4">
-                        <span x-show="lang === 'en'">Newsletter & Audience Strategy</span>
-                        <span x-show="lang === 'es'">Estrategia de Newsletters & Audiencias</span>
-                    </h3>
-                    <span class="text-xl md:text-2xl text-zinc-700 group-hover:text-teal-400 font-black flex-shrink-0 transition-transform group-hover:translate-x-1">→</span>
-                </div>
-
-                <!-- Card 2 -->
-                <div role="button" tabindex="0"
-                     @click="openModal = 2; trackLPO('service_open', 'content')"
-                     @keydown.enter="openModal = 2; trackLPO('service_open', 'content')"
-                     @keydown.space.prevent="openModal = 2; trackLPO('service_open', 'content')"
-                     class="focus-ring group bg-black border-2 border-zinc-800 p-6 md:p-8 flex items-center justify-between cursor-pointer hover:border-orange-500 hover:bg-zinc-900/30 transition-all duration-300 transform hover:-translate-y-1.5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_#f97316]">
-                    <h3 class="text-xl md:text-2xl lg:text-3xl font-bold uppercase tracking-tight text-white group-hover:text-orange-400 transition-colors text-left pr-4">
-                        <span x-show="lang === 'en'">Content & Audiovisual Production</span>
-                        <span x-show="lang === 'es'">Contenidos & Producción Audiovisual</span>
-                    </h3>
-                    <span class="text-xl md:text-2xl text-zinc-700 group-hover:text-orange-400 font-black flex-shrink-0 transition-transform group-hover:translate-x-1">→</span>
-                </div>
-
-                <!-- Card 3 -->
-                <div role="button" tabindex="0"
-                     @click="openModal = 3; trackLPO('service_open', 'paid_media')"
-                     @keydown.enter="openModal = 3; trackLPO('service_open', 'paid_media')"
-                     @keydown.space.prevent="openModal = 3; trackLPO('service_open', 'paid_media')"
-                     class="focus-ring group bg-black border-2 border-zinc-800 p-6 md:p-8 flex items-center justify-between cursor-pointer hover:border-orange-500 hover:bg-zinc-900/30 transition-all duration-300 transform hover:-translate-y-1.5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_#f97316]">
-                    <h3 class="text-xl md:text-2xl lg:text-3xl font-bold uppercase tracking-tight text-white group-hover:text-orange-400 transition-colors text-left pr-4">
-                        <span x-show="lang === 'en'">Digital Promotion & Paid Campaigns</span>
-                        <span x-show="lang === 'es'">Promoción Digital & Campañas (Paid)</span>
-                    </h3>
-                    <span class="text-xl md:text-2xl text-zinc-700 group-hover:text-orange-400 font-black flex-shrink-0 transition-transform group-hover:translate-x-1">→</span>
-                </div>
-
-                <!-- Card 4 -->
-                <div role="button" tabindex="0"
-                     @click="openModal = 4; trackLPO('service_open', 'analytics')"
-                     @keydown.enter="openModal = 4; trackLPO('service_open', 'analytics')"
-                     @keydown.space.prevent="openModal = 4; trackLPO('service_open', 'analytics')"
-                     class="focus-ring group bg-black border-2 border-zinc-800 p-6 md:p-8 flex items-center justify-between cursor-pointer hover:border-teal-400 hover:bg-zinc-900/30 transition-all duration-300 transform hover:-translate-y-1.5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_#2dd4bf]">
-                    <h3 class="text-xl md:text-2xl lg:text-3xl font-bold uppercase tracking-tight text-white group-hover:text-teal-400 transition-colors text-left pr-4">
-                        <span x-show="lang === 'en'">Data, Analytics & Business Reports</span>
-                        <span x-show="lang === 'es'">Data, Analítica & Reportes de Negocio</span>
-                    </h3>
-                    <span class="text-xl md:text-2xl text-zinc-700 group-hover:text-teal-400 font-black flex-shrink-0 transition-transform group-hover:translate-x-1">→</span>
-                </div>
-
-            </div>
-
-            <!-- MODALES INTERACTIVOS CON BULLETS EN AMBOS IDIOMAS -->
-            <template x-teleport="body">
-                <div x-show="openModal !== null" 
-                     class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm"
-                     x-transition:enter="transition ease-out duration-300"
-                     x-transition:enter-start="opacity-0"
-                     x-transition:enter-end="opacity-100"
-                     x-transition:leave="transition ease-in duration-200"
-                     x-transition:leave-start="opacity-100"
-                     x-transition:leave-end="opacity-0"
-                     x-cloak>
-                    
-                    <div @click.away="openModal = null" 
-                         class="bg-zinc-900 border-2 md:border-4 border-black w-full max-w-2xl p-6 md:p-8 position-relative shadow-[6px_6px_0px_0px_#2dd4bf] max-h-[90vh] overflow-y-auto text-left"
-                         x-transition:enter="transition cubic-bezier(0.16, 1, 0.3, 1) duration-400"
-                         x-transition:enter-start="opacity-0 scale-95 translate-y-2"
-                         x-transition:enter-end="opacity-100 scale-100 translate-y-0"
-                         x-transition:leave="transition ease-in duration-200"
-                         x-transition:leave-start="opacity-100 scale-100 translate-y-0"
-                         x-transition:leave-end="opacity-0 scale-95 translate-y-2">
-                        
-                        <div class="flex justify-between items-center mb-6">
-                            <span class="text-[10px] md:text-xs uppercase bg-orange-500 text-white font-black px-2.5 py-1 tracking-widest">
-                                <span x-show="lang === 'en'">Featured Service</span>
-                                <span x-show="lang === 'es'">Servicio Destacado</span>
-                            </span>
-                            <button type="button" @click="openModal = null" class="text-zinc-400 hover:text-white text-3xl font-bold leading-none">&times;</button>
-                        </div>
-
-                        <!-- Contenido 1 (Newsletters) -->
-                        <div x-show="openModal === 1" class="space-y-6">
-                            <h4 class="text-2xl md:text-3xl font-black uppercase text-white tracking-tight">
-                                <span x-show="lang === 'en'">Newsletter & Audience Strategy</span>
-                                <span x-show="lang === 'es'">Estrategia de Newsletters & Audiencias</span>
-                            </h4>
-                            
-                            <!-- Inglés -->
-                            <ul x-show="lang === 'en'" class="space-y-3.5 text-zinc-300 text-sm md:text-base">
-                                <li class="flex items-start gap-3">
-                                    <span class="text-teal-400 font-bold mt-0.5">✦</span>
-                                    <span><strong>Own Your Audience:</strong> Build a direct communication channel that reduces platform dependence and strengthens loyalty.</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <span class="text-teal-400 font-bold mt-0.5">✦</span>
-                                    <span><strong>Editorial Experience:</strong> Apply proven newsletter and audience-growth practices developed through work with <em>QuePasa</em> and <em>Tierra Viva</em>.</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <span class="text-teal-400 font-bold mt-0.5">✦</span>
-                                    <span><strong>A Better Reading Experience:</strong> Use carefully curated content and custom layouts built to make every edition clearer and more engaging.</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <span class="text-teal-400 font-bold mt-0.5">✦</span>
-                                    <span><strong>Continuous Optimization:</strong> Improve opens, clicks and engagement through consistent measurement and iteration.</span>
-                                </li>
-                            </ul>
-
-                            <!-- Español -->
-                            <ul x-show="lang === 'es'" class="space-y-3.5 text-zinc-300 text-sm md:text-base">
-                                <li class="flex items-start gap-3">
-                                    <span class="text-teal-400 font-bold mt-0.5">✦</span>
-                                    <span><strong>Audiencia propia:</strong> Construí un canal directo que reduzca la dependencia de las plataformas y fortalezca la fidelidad.</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <span class="text-teal-400 font-bold mt-0.5">✦</span>
-                                    <span><strong>Experiencia editorial:</strong> Aplicamos aprendizajes reales de crecimiento de newsletters y audiencias desarrollados con <em>QuePasa</em> y <em>Tierra Viva</em>.</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <span class="text-teal-400 font-bold mt-0.5">✦</span>
-                                    <span><strong>Mejor experiencia de lectura:</strong> Combinamos curaduría y diseño a medida para crear ediciones más claras y atractivas.</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <span class="text-teal-400 font-bold mt-0.5">✦</span>
-                                    <span><strong>Optimización continua:</strong> Mejoramos aperturas, clics y engagement a partir de medición e iteración constante.</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <!-- Contenido 2 (Audiovisual) -->
-                        <div x-show="openModal === 2" class="space-y-6">
-                            <h4 class="text-2xl md:text-3xl font-black uppercase text-white tracking-tight">
-                                <span x-show="lang === 'en'">Content & Audiovisual Production</span>
-                                <span x-show="lang === 'es'">Contenidos & Producción Audiovisual</span>
-                            </h4>
-                            
-                            <!-- Inglés -->
-                            <ul x-show="lang === 'en'" class="space-y-3.5 text-zinc-300 text-sm md:text-base">
-                                <li class="flex items-start gap-3">
-                                    <span class="text-orange-500 font-bold mt-0.5">✦</span>
-                                    <span><strong>Capture Attention:</strong> Create distinctive visual pieces designed to earn attention within the first seconds.</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <span class="text-orange-500 font-bold mt-0.5">✦</span>
-                                    <span><strong>Platform-Native Storytelling:</strong> Produce vertical video and dynamic narratives that feel natural in today’s social feeds.</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <span class="text-orange-500 font-bold mt-0.5">✦</span>
-                                    <span><strong>Premium Brand Expression:</strong> Translate editorial and institutional messages into polished creative that reflects your brand.</span>
-                                </li>
-                            </ul>
-
-                            <!-- Español -->
-                            <ul x-show="lang === 'es'" class="space-y-3.5 text-zinc-300 text-sm md:text-base">
-                                <li class="flex items-start gap-3">
-                                    <span class="text-orange-500 font-bold mt-0.5">✦</span>
-                                    <span><strong>Captar atención:</strong> Creamos piezas visuales distintivas pensadas para ganar atención en los primeros segundos.</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <span class="text-orange-500 font-bold mt-0.5">✦</span>
-                                    <span><strong>Narrativas nativas de plataforma:</strong> Producimos video vertical y formatos dinámicos que se integran naturalmente a las redes.</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <span class="text-orange-500 font-bold mt-0.5">✦</span>
-                                    <span><strong>Expresión de marca premium:</strong> Convertimos mensajes editoriales e institucionales en piezas cuidadas y coherentes con tu identidad.</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <!-- Contenido 3 (Paid Media) -->
-                        <div x-show="openModal === 3" class="space-y-6">
-                            <h4 class="text-2xl md:text-3xl font-black uppercase text-white tracking-tight">
-                                <span x-show="lang === 'en'">Digital Promotion & Paid Campaigns</span>
-                                <span x-show="lang === 'es'">Promoción Digital & Campañas (Paid)</span>
-                            </h4>
-                            
-                            <!-- Inglés -->
-                            <ul x-show="lang === 'en'" class="space-y-3.5 text-zinc-300 text-sm md:text-base">
-                                <li class="flex items-start gap-3">
-                                    <span class="text-orange-500 font-bold mt-0.5">✦</span>
-                                    <span><strong>Reach the Right Audience:</strong> Coordinate campaigns across Meta Ads, Google Ads and TikTok Ads around a shared business objective.</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <span class="text-orange-500 font-bold mt-0.5">✦</span>
-                                    <span><strong>Reduce Wasted Spend:</strong> Identify budget leaks, structural issues and missed opportunities through a complete account audit.</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <span class="text-orange-500 font-bold mt-0.5">✦</span>
-                                    <span><strong>Optimize for Outcomes:</strong> Build focused acquisition campaigns around conversions, qualified reach and measurable return.</span>
-                                </li>
-                            </ul>
-
-                            <!-- Español -->
-                            <ul x-show="lang === 'es'" class="space-y-3.5 text-zinc-300 text-sm md:text-base">
-                                <li class="flex items-start gap-3">
-                                    <span class="text-orange-500 font-bold mt-0.5">✦</span>
-                                    <span><strong>Llegar a la audiencia correcta:</strong> Coordinamos campañas en Meta Ads, Google Ads y TikTok Ads alrededor de un mismo objetivo de negocio.</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <span class="text-orange-500 font-bold mt-0.5">✦</span>
-                                    <span><strong>Reducir desperdicio de inversión:</strong> Detectamos fugas de presupuesto, problemas de estructura y oportunidades desaprovechadas.</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <span class="text-orange-500 font-bold mt-0.5">✦</span>
-                                    <span><strong>Optimizar resultados:</strong> Diseñamos campañas enfocadas en conversiones, alcance calificado y retorno medible.</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <!-- Contenido 4 (Data & Analítica) -->
-                        <div x-show="openModal === 4" class="space-y-6">
-                            <h4 class="text-2xl md:text-3xl font-black uppercase text-white tracking-tight">
-                                <span x-show="lang === 'en'">Data, Analytics & Business Reports</span>
-                                <span x-show="lang === 'es'">Data, Analítica & Reportes de Negocio</span>
-                            </h4>
-                            
-                            <!-- Inglés -->
-                            <ul x-show="lang === 'en'" class="space-y-3.5 text-zinc-300 text-sm md:text-base">
-                                <li class="flex items-start gap-3">
-                                    <span class="text-teal-400 font-bold mt-0.5">✦</span>
-                                    <span><strong>See the Full Picture:</strong> Centralize measurement across newsletters, paid traffic and organic content.</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <span class="text-teal-400 font-bold mt-0.5">✦</span>
-                                    <span><strong>Turn Data into Clarity:</strong> Translate complex analytics into concise, decision-ready reporting.</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <span class="text-teal-400 font-bold mt-0.5">✦</span>
-                                    <span><strong>Know What to Do Next:</strong> Use actionable monthly reports to guide commercial and creative priorities.</span>
-                                </li>
-                            </ul>
-
-                            <!-- Español -->
-                            <ul x-show="lang === 'es'" class="space-y-3.5 text-zinc-300 text-sm md:text-base">
-                                <li class="flex items-start gap-3">
-                                    <span class="text-teal-400 font-bold mt-0.5">✦</span>
-                                    <span><strong>Ver el panorama completo:</strong> Centralizamos la medición de newsletters, pauta y contenido orgánico.</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <span class="text-teal-400 font-bold mt-0.5">✦</span>
-                                    <span><strong>Convertir datos en claridad:</strong> Traducimos métricas complejas en reportes concisos para tomar decisiones.</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <span class="text-teal-400 font-bold mt-0.5">✦</span>
-                                    <span><strong>Definir el próximo paso:</strong> Creamos reportes mensuales accionables para ordenar prioridades comerciales y creativas.</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <a href="https://calendar.app.google/niWXG4odzZ9zTqN68" target="_blank" rel="noopener noreferrer"
-                           onclick="trackLPO('book_call', 'service_modal')"
-                           class="focus-ring mt-8 w-full block text-center bg-orange-500 text-white font-bold uppercase py-3 border border-black tracking-wider hover:bg-teal-400 hover:text-black transition-colors text-sm md:text-base">
-                            <span x-show="lang === 'en'">Discuss this service</span>
-                            <span x-show="lang === 'es'">Conversemos sobre este servicio</span>
-                        </a>
-
-                        <button type="button" @click="openModal = null" class="mt-3 w-full bg-white text-black font-bold uppercase py-3 border border-black tracking-wider hover:bg-teal-400 transition-colors text-sm md:text-base">
-                            <span x-show="lang === 'en'">Close Window</span>
-                            <span x-show="lang === 'es'">Cerrar Ventana</span>
-                        </button>
-                    </div>
-                </div>
-            </template>
-
-        </div>
-    </section>
-
-
-    <!-- EXPERIENCIA SELECCIONADA -->
-    <section id="experiencia" class="bg-black py-20 px-4 md:px-6 border-t-2 border-zinc-900">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-16 items-start">
-                <div>
-                    <span class="section-kicker">
-                        <span x-show="lang === 'en'">// SELECTED EXPERIENCE</span>
-                        <span x-show="lang === 'es'">// EXPERIENCIA SELECCIONADA</span>
-                    </span>
-                    <h2 class="text-3xl md:text-6xl font-black uppercase tracking-tight mt-3">
-                        <span x-show="lang === 'en'">WORK BUILT IN THE REAL WORLD</span>
-                        <span x-show="lang === 'es'">TRABAJO CON EXPERIENCIA REAL</span>
-                    </h2>
-                </div>
-                <div class="grid sm:grid-cols-2 gap-5">
-                    <article class="border-2 border-zinc-800 bg-zinc-950 p-6 hover:border-teal-400 transition-colors">
-                        <p class="eyebrow text-teal-400">QuePasa Media</p>
-                        <h3 class="text-2xl font-black uppercase mt-3 mb-4">
-                            <span x-show="lang === 'en'">Audience and newsletter growth</span>
-                            <span x-show="lang === 'es'">Crecimiento de audiencia y newsletters</span>
-                        </h3>
-                        <p class="text-zinc-400 leading-relaxed">
-                            <span x-show="lang === 'en'">Editorial strategy, newsletter optimization, paid promotion and performance reporting for a multilingual media ecosystem.</span>
-                            <span x-show="lang === 'es'">Estrategia editorial, optimización de newsletters, promoción paga y reportes de rendimiento para un ecosistema de medios multilingüe.</span>
-                        </p>
-                    </article>
-                    <article class="border-2 border-zinc-800 bg-zinc-950 p-6 hover:border-orange-500 transition-colors">
-                        <p class="eyebrow text-orange-500">Tierra Viva</p>
-                        <h3 class="text-2xl font-black uppercase mt-3 mb-4">
-                            <span x-show="lang === 'en'">Content and digital communication</span>
-                            <span x-show="lang === 'es'">Contenido y comunicación digital</span>
-                        </h3>
-                        <p class="text-zinc-400 leading-relaxed">
-                            <span x-show="lang === 'en'">Audience-focused content, audiovisual production and campaign assets designed to support reach and engagement.</span>
-                            <span x-show="lang === 'es'">Contenido orientado a audiencias, producción audiovisual y piezas de campaña pensadas para impulsar alcance e interacción.</span>
-                        </p>
-                    </article>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CÓMO TRABAJAMOS -->
-    <section class="bg-zinc-950 py-20 px-4 md:px-6 border-t-2 border-zinc-900">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <span class="section-kicker">
-                    <span x-show="lang === 'en'">// HOW WE WORK</span>
-                    <span x-show="lang === 'es'">// CÓMO TRABAJAMOS</span>
-                </span>
-                <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tight mt-3">
-                    <span x-show="lang === 'en'">STRATEGY, EXECUTION, MEASUREMENT</span>
-                    <span x-show="lang === 'es'">ESTRATEGIA, EJECUCIÓN, MEDICIÓN</span>
-                </h2>
-            </div>
-            <div class="grid md:grid-cols-3 gap-5">
-                <div class="border-t-4 border-orange-500 bg-black p-6">
-                    <span class="text-5xl font-black text-zinc-800">01</span>
-                    <h3 class="text-xl font-black uppercase mt-4 mb-3">
-                        <span x-show="lang === 'en'">Understand</span>
-                        <span x-show="lang === 'es'">Entender</span>
-                    </h3>
-                    <p class="text-zinc-400">
-                        <span x-show="lang === 'en'">We map your objectives, audience, channels and current performance before proposing a solution.</span>
-                        <span x-show="lang === 'es'">Mapeamos objetivos, audiencia, canales y rendimiento actual antes de proponer una solución.</span>
-                    </p>
-                </div>
-                <div class="border-t-4 border-teal-400 bg-black p-6">
-                    <span class="text-5xl font-black text-zinc-800">02</span>
-                    <h3 class="text-xl font-black uppercase mt-4 mb-3">
-                        <span x-show="lang === 'en'">Build</span>
-                        <span x-show="lang === 'es'">Construir</span>
-                    </h3>
-                    <p class="text-zinc-400">
-                        <span x-show="lang === 'en'">We turn strategy into content, campaigns, audience products and measurement systems.</span>
-                        <span x-show="lang === 'es'">Convertimos la estrategia en contenido, campañas, productos de audiencia y sistemas de medición.</span>
-                    </p>
-                </div>
-                <div class="border-t-4 border-orange-500 bg-black p-6">
-                    <span class="text-5xl font-black text-zinc-800">03</span>
-                    <h3 class="text-xl font-black uppercase mt-4 mb-3">
-                        <span x-show="lang === 'en'">Improve</span>
-                        <span x-show="lang === 'es'">Mejorar</span>
-                    </h3>
-                    <p class="text-zinc-400">
-                        <span x-show="lang === 'en'">We measure what matters, identify opportunities and continuously refine the work.</span>
-                        <span x-show="lang === 'es'">Medimos lo que importa, detectamos oportunidades y refinamos el trabajo de manera continua.</span>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECCIÓN CONTACTO -->
-    <section id="contacto" class="bg-black py-24 px-4 md:px-6 border-t-2 border-zinc-900">
-        <div class="max-w-4xl mx-auto text-center flex flex-col items-center justify-center">
-            <span class="section-kicker">
-                <span x-show="lang === 'en'">// LET'S TALK</span>
-                <span x-show="lang === 'es'">// CONVERSEMOS</span>
-            </span>
-            <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-white mt-3 mb-5">
-                <span x-show="lang === 'en'">LET'S FIND YOUR NEXT GROWTH OPPORTUNITY</span>
-                <span x-show="lang === 'es'">ENCONTREMOS TU PRÓXIMA OPORTUNIDAD DE CRECIMIENTO</span>
+    <section id="services" class="content-section">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow" data-en="What we do" data-es="Qué hacemos">What we do</div>
+            <h2 data-en="Four capabilities. One connected strategy."
+                data-es="Cuatro capacidades. Una estrategia conectada.">
+              Four capabilities. One connected strategy.
             </h2>
-            <p class="text-zinc-400 text-base md:text-xl mb-9 max-w-2xl mx-auto leading-relaxed">
-                <span x-show="lang === 'en'">Book a 30-minute conversation to tell us about your goals, current challenges and what you want to improve. No generic pitch: just a focused first exchange.</span>
-                <span x-show="lang === 'es'">Agendá una conversación de 30 minutos para contarnos tus objetivos, desafíos actuales y qué querés mejorar. Sin discursos genéricos: un primer intercambio concreto.</span>
-            </p>
-
-            <a href="https://calendar.app.google/niWXG4odzZ9zTqN68" target="_blank" rel="noopener noreferrer"
-               onclick="trackLPO('book_call', 'contact_primary')"
-               class="focus-ring w-full sm:w-auto text-center text-sm md:text-base font-black bg-orange-500 text-white px-8 py-4 uppercase border-2 border-black shadow-[5px_5px_0px_0px_#2dd4bf] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all tracking-wide mb-8">
-                <span x-show="lang === 'en'">Book a strategy call</span>
-                <span x-show="lang === 'es'">Agendar una reunión</span>
-            </a>
-
-            <p class="text-zinc-600 text-xs uppercase tracking-widest mb-4">
-                <span x-show="lang === 'en'">Or contact us directly</span>
-                <span x-show="lang === 'es'">O escribinos directamente</span>
-            </p>
-
-            <div class="flex flex-col sm:flex-row gap-4 w-full justify-center items-center">
-                <a href="mailto:lapetiteorchestra@gmail.com"
-                   onclick="trackLPO('contact_email', 'footer')"
-                   class="focus-ring w-full sm:w-auto text-center text-sm md:text-base font-black bg-zinc-900 text-white px-6 py-4 uppercase border-2 border-zinc-700 hover:border-orange-500 transition-all tracking-tight">
-                    hola@lapetiteorchestra.com
-                </a>
-                <a href="https://wa.me/5491123396422" target="_blank" rel="noopener noreferrer"
-                   onclick="trackLPO('contact_whatsapp', 'footer')"
-                   class="focus-ring w-full sm:w-auto text-center text-sm md:text-base font-black bg-[#128C7E] text-white px-6 py-4 uppercase border-2 border-black hover:bg-[#0f766e] transition-all tracking-tight flex items-center justify-center gap-2">
-                    <svg aria-hidden="true" class="w-5 h-5 fill-current text-white" viewBox="0 0 24 24">
-                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397 0 11.93 0c3.165.001 6.14 1.233 8.377 3.473 2.237 2.24 3.466 5.214 3.466 8.385 0 6.533-5.338 11.882-11.87 11.882-2.004-.001-3.972-.51-5.729-1.48L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.725 1.451 5.4 0 9.792-4.413 9.795-9.839.001-2.628-1.01-5.1-2.846-6.942-1.836-1.843-4.278-2.857-6.932-2.858-5.402 0-9.795 4.414-9.798 9.84-.001 1.948.497 3.491 1.45 4.969l-.995 3.637 3.73-.979zm11.232-6.402c-.314-.157-1.855-.915-2.143-1.02-.288-.104-.497-.157-.706.157-.21.314-.81.104-.993.314-.183.21-.366.236-.68.079-.314-.157-1.326-.49-2.528-1.561-.935-.836-1.567-1.868-1.75-2.183-.183-.314-.02-.485.137-.641.142-.14.314-.366.47-.55.157-.183.21-.314.314-.524.104-.21.052-.393-.026-.55-.079-.157-.706-1.701-.967-2.33-.254-.609-.513-.526-.706-.536-.183-.01-.393-.01-.601-.01-.21 0-.55.079-.836.393-.288.314-1.1 1.074-1.1 2.619 0 1.545 1.127 3.039 1.284 3.249.157.21 2.217 3.385 5.372 4.747.75.324 1.336.518 1.793.663.753.239 1.439.205 1.982.124.605-.09 1.855-.758 2.117-1.453.262-.695.262-1.289.183-1.411-.078-.124-.288-.197-.601-.354z"/>
-                    </svg>
-                    WhatsApp
-                </a>
-            </div>
+          </div>
+          <p data-en="We combine editorial thinking, creative production, paid distribution and measurement so every channel supports the same business objective."
+             data-es="Combinamos mirada editorial, producción creativa, distribución paga y medición para que cada canal responda al mismo objetivo de negocio.">
+            We combine editorial thinking, creative production, paid distribution and measurement so every channel supports the same business objective.
+          </p>
         </div>
+
+        <div class="services-grid">
+          <article class="service focus" tabindex="0" role="button" data-service="newsletter">
+            <div class="service-num">01</div>
+            <div>
+              <h3 data-en="Newsletter & Audience Strategy" data-es="Estrategia de newsletters & audiencias">Newsletter & Audience Strategy</h3>
+              <p data-en="Build a direct channel, strengthen loyalty and improve engagement through editorial strategy and continuous optimization."
+                 data-es="Construí un canal directo, fortalecé la fidelidad y mejorá el engagement con estrategia editorial y optimización continua.">
+                Build a direct channel, strengthen loyalty and improve engagement through editorial strategy and continuous optimization.
+              </p>
+            </div>
+            <div class="service-arrow">↗</div>
+          </article>
+
+          <article class="service focus" tabindex="0" role="button" data-service="content">
+            <div class="service-num">02</div>
+            <div>
+              <h3 data-en="Content & Audiovisual Production" data-es="Contenido & producción audiovisual">Content & Audiovisual Production</h3>
+              <p data-en="Create distinctive pieces and platform-native formats designed to earn attention without sacrificing brand quality."
+                 data-es="Creamos piezas distintivas y formatos nativos de plataforma pensados para ganar atención sin sacrificar calidad de marca.">
+                Create distinctive pieces and platform-native formats designed to earn attention without sacrificing brand quality.
+              </p>
+            </div>
+            <div class="service-arrow">↗</div>
+          </article>
+
+          <article class="service focus" tabindex="0" role="button" data-service="paid">
+            <div class="service-num">03</div>
+            <div>
+              <h3 data-en="Digital Promotion & Paid Campaigns" data-es="Promoción digital & campañas pagas">Digital Promotion & Paid Campaigns</h3>
+              <p data-en="Plan and optimize campaigns across Google, Meta and other platforms around clear commercial objectives."
+                 data-es="Planificamos y optimizamos campañas en Google, Meta y otras plataformas alrededor de objetivos comerciales claros.">
+                Plan and optimize campaigns across Google, Meta and other platforms around clear commercial objectives.
+              </p>
+            </div>
+            <div class="service-arrow">↗</div>
+          </article>
+
+          <article class="service focus" tabindex="0" role="button" data-service="analytics">
+            <div class="service-num">04</div>
+            <div>
+              <h3 data-en="Data, Analytics & Business Reporting" data-es="Data, analítica & reportes de negocio">Data, Analytics & Business Reporting</h3>
+              <p data-en="Turn fragmented metrics into clear reporting, better decisions and a practical roadmap for what comes next."
+                 data-es="Convertimos métricas dispersas en reportes claros, mejores decisiones y una hoja de ruta práctica para lo que sigue.">
+                Turn fragmented metrics into clear reporting, better decisions and a practical roadmap for what comes next.
+              </p>
+            </div>
+            <div class="service-arrow">↗</div>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-zinc-950 py-8 px-6 text-center text-xs md:text-sm text-zinc-600 border-t border-zinc-900">
-        <p>&copy; 2026 LA PETITE ORCHESTRA. <span x-show="lang === 'en'">All rights reserved.</span><span x-show="lang === 'es'">Todos los derechos reservados.</span></p>
-    </footer>
+    <section class="content-section" id="collaborations">
+      <div class="shell collab-intro">
+        <div class="collab-statement">
+          <div class="eyebrow" data-en="Current collaborations" data-es="Colaboraciones actuales">Current collaborations</div>
+          <h2 data-en="We work with organizations that generate real impact."
+              data-es="Trabajamos con organizaciones que generan impacto real.">
+            We work with organizations that generate real impact.
+          </h2>
+          <p data-en="Instead of invented case-study numbers, we show the kind of work we actually do and the disciplines involved in each collaboration."
+             data-es="En lugar de inventar métricas de casos de éxito, mostramos el trabajo que efectivamente hacemos y las disciplinas que intervienen en cada colaboración.">
+            Instead of invented case-study numbers, we show the kind of work we actually do and the disciplines involved in each collaboration.
+          </p>
+        </div>
 
+        <div class="collab-list">
+          <article class="project">
+            <div>
+              <img class="project-logo" src="logo-quepasa.png" alt="QuePasa">
+              <h3 data-en="Audience and newsletter strategy for a multicultural media ecosystem."
+                  data-es="Estrategia de audiencias y newsletters para un ecosistema de medios multicultural.">
+                Audience and newsletter strategy for a multicultural media ecosystem.
+              </h3>
+              <p data-en="Ongoing editorial curation, newsletter optimization, paid media support and performance reporting."
+                 data-es="Curaduría editorial continua, optimización de newsletters, apoyo de pauta y reportes de rendimiento.">
+                Ongoing editorial curation, newsletter optimization, paid media support and performance reporting.
+              </p>
+              <div class="chips" aria-label="QuePasa services">
+                <span class="chip">Newsletter Strategy</span>
+                <span class="chip">Audience</span>
+                <span class="chip">Paid Media</span>
+                <span class="chip">Reporting</span>
+              </div>
+            </div>
+            <div class="project-visual" aria-hidden="true">
+              <div class="project-mark" data-en="Real project assets can be added here later"
+                   data-es="Más adelante podemos sumar piezas reales del proyecto">
+                Real project assets<br>can be added here later
+              </div>
+            </div>
+          </article>
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "La Petite Orchestra",
-      "url": "https://lapetiteorchestra.com/",
-      "logo": "https://lapetiteorchestra.com/lpo-logo.png",
-      "email": "lapetiteorchestra@gmail.com",
-      "sameAs": [],
-      "description": "Creative marketing and communication agency specializing in content strategy, paid media, audience development and analytics.",
-      "areaServed": "Worldwide"
+          <article class="project">
+            <div>
+              <img class="project-logo tierra" src="logo-tierraviva.png" alt="Tierra Viva">
+              <h3 data-en="Content and digital communication for an environmental media project."
+                  data-es="Contenido y comunicación digital para un proyecto ambiental.">
+                Content and digital communication for an environmental media project.
+              </h3>
+              <p data-en="Audience-focused content, audiovisual production and campaign assets built for digital channels."
+                 data-es="Contenido orientado a audiencias, producción audiovisual y piezas de campaña pensadas para canales digitales.">
+                Audience-focused content, audiovisual production and campaign assets built for digital channels.
+              </p>
+              <div class="chips" aria-label="Tierra Viva services">
+                <span class="chip">Content Strategy</span>
+                <span class="chip">Audiovisual</span>
+                <span class="chip">Campaign Assets</span>
+                <span class="chip">Audience</span>
+              </div>
+            </div>
+            <div class="project-visual" aria-hidden="true">
+              <div class="project-mark" data-en="Real project assets can be added here later"
+                   data-es="Más adelante podemos sumar piezas reales del proyecto">
+                Real project assets<br>can be added here later
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow" data-en="How we work" data-es="Cómo trabajamos">How we work</div>
+            <h2 data-en="Clear thinking before more output."
+                data-es="Primero claridad. Después, ejecución.">
+              Clear thinking before more output.
+            </h2>
+          </div>
+          <p data-en="We start with the business problem, build the right system and then measure what deserves to be improved."
+             data-es="Partimos del problema de negocio, construimos el sistema adecuado y después medimos qué merece ser mejorado.">
+            We start with the business problem, build the right system and then measure what deserves to be improved.
+          </p>
+        </div>
+
+        <div class="process-grid">
+          <article class="process">
+            <div class="process-num">01 / DISCOVER</div>
+            <h3 data-en="Understand" data-es="Entender">Understand</h3>
+            <p data-en="Objectives, audience, channels, constraints and current performance."
+               data-es="Objetivos, audiencia, canales, restricciones y rendimiento actual.">
+              Objectives, audience, channels, constraints and current performance.
+            </p>
+          </article>
+          <article class="process">
+            <div class="process-num">02 / BUILD</div>
+            <h3 data-en="Create" data-es="Crear">Create</h3>
+            <p data-en="Strategy becomes content, campaigns, audience products and measurement."
+               data-es="La estrategia se convierte en contenido, campañas, productos de audiencia y medición.">
+              Strategy becomes content, campaigns, audience products and measurement.
+            </p>
+          </article>
+          <article class="process">
+            <div class="process-num">03 / IMPROVE</div>
+            <h3 data-en="Measure" data-es="Medir">Measure</h3>
+            <p data-en="We read the signal, identify opportunities and refine the work continuously."
+               data-es="Leemos la señal, detectamos oportunidades y refinamos el trabajo de forma continua.">
+              We read the signal, identify opportunities and refine the work continuously.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing" id="contact">
+      <div class="shell">
+        <div class="eyebrow" style="justify-content:center" data-en="Let's talk" data-es="Conversemos">Let's talk</div>
+        <h2 data-en="Have a communication problem worth solving?"
+            data-es="¿Tenés un problema de comunicación que valga la pena resolver?">
+          Have a communication problem worth solving?
+        </h2>
+        <p data-en="Book a 30-minute conversation. Tell us what you're trying to achieve and we'll start by understanding the problem — not by selling you a package."
+           data-es="Agendá una conversación de 30 minutos. Contanos qué querés lograr y empecemos por entender el problema, no por venderte un paquete.">
+          Book a 30-minute conversation. Tell us what you're trying to achieve and we'll start by understanding the problem — not by selling you a package.
+        </p>
+        <div class="closing-actions">
+          <a class="btn btn-primary focus" href="https://calendar.app.google/niWXG4odzZ9zTqN68" target="_blank" rel="noopener noreferrer"
+             onclick="trackLPO('book_call','closing')">
+            <span data-en="Book a strategy call" data-es="Agendar una reunión">Book a strategy call</span>
+            <span>→</span>
+          </a>
+          <a class="btn focus" href="https://wa.me/5491123396422" target="_blank" rel="noopener noreferrer"
+             onclick="trackLPO('contact_whatsapp','closing')">WhatsApp</a>
+          <a class="btn focus" href="mailto:lapetiteorchestra@gmail.com"
+             onclick="trackLPO('contact_email','closing')">Email</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <span>© 2026 La Petite Orchestra.</span>
+      <div class="footer-links">
+        <a href="#services" data-en="Services" data-es="Servicios">Services</a>
+        <a href="#collaborations" data-en="Collaborations" data-es="Colaboraciones">Collaborations</a>
+        <a href="https://calendar.app.google/niWXG4odzZ9zTqN68" target="_blank" rel="noopener noreferrer"
+           data-en="Book a call" data-es="Agendar reunión">Book a call</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal-backdrop" id="serviceModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-head">
+        <h3 id="modalTitle"></h3>
+        <button class="modal-close focus" type="button" id="modalClose" aria-label="Close">×</button>
+      </div>
+      <ul id="modalList"></ul>
+      <div class="modal-footer">
+        <a class="btn btn-primary focus" href="https://calendar.app.google/niWXG4odzZ9zTqN68" target="_blank" rel="noopener noreferrer"
+           onclick="trackLPO('book_call','service_modal')">
+          <span data-en="Discuss this service" data-es="Conversemos sobre este servicio">Discuss this service</span> →
+        </a>
+        <button class="btn focus" type="button" id="modalCloseSecondary"
+                data-en="Close" data-es="Cerrar">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const BOOKING = "https://calendar.app.google/niWXG4odzZ9zTqN68";
+    let currentLang = localStorage.getItem('lpoLang') || 'en';
+
+    const serviceData = {
+      newsletter: {
+        en: {
+          title: 'Newsletter & Audience Strategy',
+          bullets: [
+            'Build a direct communication channel that reduces platform dependence and strengthens audience loyalty.',
+            'Define editorial structure, curation and cadence around the needs of your audience.',
+            'Optimize opens, clicks and engagement through consistent measurement and iteration.',
+            'Translate newsletter performance into practical next steps.'
+          ]
+        },
+        es: {
+          title: 'Estrategia de newsletters & audiencias',
+          bullets: [
+            'Construir un canal directo que reduzca la dependencia de plataformas y fortalezca la fidelidad de la audiencia.',
+            'Definir estructura editorial, curaduría y frecuencia en función de las necesidades de la audiencia.',
+            'Optimizar aperturas, clics y engagement mediante medición e iteración constante.',
+            'Traducir el rendimiento del newsletter en próximos pasos concretos.'
+          ]
+        }
+      },
+      content: {
+        en: {
+          title: 'Content & Audiovisual Production',
+          bullets: [
+            'Create distinctive visual and editorial pieces that earn attention quickly.',
+            'Develop platform-native vertical video and dynamic social formats.',
+            'Protect brand quality while adapting content to each channel.',
+            'Build repeatable content systems instead of isolated pieces.'
+          ]
+        },
+        es: {
+          title: 'Contenido & producción audiovisual',
+          bullets: [
+            'Crear piezas visuales y editoriales distintivas que ganen atención rápidamente.',
+            'Desarrollar video vertical y formatos dinámicos nativos de cada plataforma.',
+            'Cuidar la calidad de marca mientras el contenido se adapta a cada canal.',
+            'Construir sistemas de contenido repetibles en lugar de piezas aisladas.'
+          ]
+        }
+      },
+      paid: {
+        en: {
+          title: 'Digital Promotion & Paid Campaigns',
+          bullets: [
+            'Coordinate paid campaigns around a clear commercial objective.',
+            'Audit account structure to identify waste, gaps and missed opportunities.',
+            'Connect creative, audience, landing experience and measurement.',
+            'Optimize toward qualified actions rather than vanity metrics.'
+          ]
+        },
+        es: {
+          title: 'Promoción digital & campañas pagas',
+          bullets: [
+            'Coordinar campañas pagas alrededor de un objetivo comercial claro.',
+            'Auditar la estructura de las cuentas para detectar desperdicio, brechas y oportunidades.',
+            'Conectar creatividad, audiencia, experiencia de landing y medición.',
+            'Optimizar hacia acciones calificadas y no hacia métricas de vanidad.'
+          ]
+        }
+      },
+      analytics: {
+        en: {
+          title: 'Data, Analytics & Business Reporting',
+          bullets: [
+            'Centralize the signals that matter across paid, owned and organic channels.',
+            'Turn technical analytics into concise, decision-ready reporting.',
+            'Identify what changed, why it matters and what to do next.',
+            'Build a measurement layer that supports continuous optimization.'
+          ]
+        },
+        es: {
+          title: 'Data, analítica & reportes de negocio',
+          bullets: [
+            'Centralizar las señales que importan entre canales pagos, propios y orgánicos.',
+            'Convertir analítica técnica en reportes concisos y útiles para decidir.',
+            'Identificar qué cambió, por qué importa y qué hacer después.',
+            'Construir una capa de medición que permita optimizar de manera continua.'
+          ]
+        }
+      }
+    };
+
+    function setLanguage(lang){
+      currentLang = lang;
+      localStorage.setItem('lpoLang', lang);
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-en][data-es]').forEach(el => {
+        el.textContent = el.dataset[lang];
+      });
+      document.getElementById('langEn').classList.toggle('active', lang === 'en');
+      document.getElementById('langEs').classList.toggle('active', lang === 'es');
+      if (!document.getElementById('serviceModal').hidden) {
+        const active = document.getElementById('serviceModal').dataset.service;
+        renderModal(active);
+      }
     }
-    </script>
-    <script>
-      function trackLPO(eventName, location) {
-        if (typeof gtag === 'function') {
-          gtag('event', eventName, {
-            event_category: 'engagement',
-            event_label: location,
-            link_url: eventName === 'book_call' ? 'https://calendar.app.google/niWXG4odzZ9zTqN68' : undefined
-          });
+
+    document.getElementById('langEn').addEventListener('click', () => setLanguage('en'));
+    document.getElementById('langEs').addEventListener('click', () => setLanguage('es'));
+
+    const modal = document.getElementById('serviceModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalList = document.getElementById('modalList');
+
+    function renderModal(service){
+      const data = serviceData[service][currentLang];
+      modal.dataset.service = service;
+      modalTitle.textContent = data.title;
+      modalList.innerHTML = data.bullets.map(item => `<li><span>${item}</span></li>`).join('');
+      modal.querySelectorAll('[data-en][data-es]').forEach(el => {
+        el.textContent = el.dataset[currentLang];
+      });
+    }
+
+    function openModal(service){
+      renderModal(service);
+      modal.hidden = false;
+      document.body.style.overflow = 'hidden';
+      trackLPO('service_open', service);
+      document.getElementById('modalClose').focus();
+    }
+
+    function closeModal(){
+      modal.hidden = true;
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('[data-service]').forEach(card => {
+      card.addEventListener('click', () => openModal(card.dataset.service));
+      card.addEventListener('keydown', e => {
+        if(e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          openModal(card.dataset.service);
+        }
+      });
+    });
+
+    document.getElementById('modalClose').addEventListener('click', closeModal);
+    document.getElementById('modalCloseSecondary').addEventListener('click', closeModal);
+    modal.addEventListener('click', e => { if(e.target === modal) closeModal(); });
+    window.addEventListener('keydown', e => { if(e.key === 'Escape' && !modal.hidden) closeModal(); });
+
+    function trackLPO(eventName, location){
+      if(typeof gtag === 'function'){
+        gtag('event', eventName, {
+          event_category:'engagement',
+          event_label:location
+        });
+      }
+    }
+
+    // Abstract particle-wave background: lightweight, original and self-hosted in code.
+    const canvas = document.getElementById('waveCanvas');
+    const ctx = canvas.getContext('2d', { alpha:true });
+    let w=0,h=0,dpr=1,t=0;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function resizeCanvas(){
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      w = canvas.clientWidth;
+      h = canvas.clientHeight;
+      canvas.width = Math.floor(w*dpr);
+      canvas.height = Math.floor(h*dpr);
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+    }
+
+    function drawWave(){
+      if(reduced) return;
+      ctx.clearRect(0,0,w,h);
+
+      const startX = Math.max(w*.34, 320);
+      const rows = 28;
+      const cols = 78;
+
+      for(let r=0;r<rows;r++){
+        const rn = r/(rows-1);
+        for(let c=0;c<cols;c++){
+          const cn = c/(cols-1);
+          const x = startX + cn*(w-startX+90);
+          const baseY = h*.45 + (rn-.5)*h*.48;
+          const amplitude = (55 + rn*55);
+          const y =
+            baseY +
+            Math.sin(cn*7.8 + t*0.7 + rn*3.2)*amplitude*(.20 + cn*.55) +
+            Math.cos(cn*3.3 - t*.36 + rn*5.7)*22;
+
+          const perspective = .18 + cn*.82;
+          const radius = .55 + perspective*1.45;
+          const alpha = (.055 + perspective*.22) * (1 - Math.abs(rn-.5)*.75);
+
+          ctx.beginPath();
+          ctx.arc(x,y,radius,0,Math.PI*2);
+          ctx.fillStyle = `rgba(225,235,231,${alpha})`;
+          ctx.fill();
         }
       }
 
-      // Track meaningful scroll depth once.
-      let lpoScrollTracked = false;
-      window.addEventListener('scroll', function () {
-        if (lpoScrollTracked) return;
-        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-        if (scrollable > 0 && window.scrollY / scrollable >= 0.75) {
-          lpoScrollTracked = true;
-          trackLPO('scroll_75', 'page');
-        }
-      }, { passive: true });
-    </script>
+      // one restrained teal light trace
+      ctx.beginPath();
+      for(let c=0;c<=100;c++){
+        const cn=c/100;
+        const x=startX + cn*(w-startX+80);
+        const y=h*.51 + Math.sin(cn*8 + t*.55)*46 + Math.cos(cn*3.1-t*.22)*12;
+        if(c===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+      }
+      const grad=ctx.createLinearGradient(startX,0,w,0);
+      grad.addColorStop(0,'rgba(36,212,195,0)');
+      grad.addColorStop(.55,'rgba(36,212,195,.10)');
+      grad.addColorStop(1,'rgba(36,212,195,.03)');
+      ctx.strokeStyle=grad;
+      ctx.lineWidth=1;
+      ctx.stroke();
 
+      t += .012;
+      requestAnimationFrame(drawWave);
+    }
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas, {passive:true});
+    if(!reduced) requestAnimationFrame(drawWave);
+
+    setLanguage(currentLang);
+
+    let scrollTracked=false;
+    window.addEventListener('scroll',()=>{
+      if(scrollTracked) return;
+      const total=document.documentElement.scrollHeight-window.innerHeight;
+      if(total>0 && window.scrollY/total>=.75){
+        scrollTracked=true;
+        trackLPO('scroll_75','page');
+      }
+    },{passive:true});
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"ProfessionalService",
+    "name":"La Petite Orchestra",
+    "url":"https://lapetiteorchestra.com/",
+    "logo":"https://lapetiteorchestra.com/logo-lpo.svg",
+    "email":"lapetiteorchestra@gmail.com",
+    "description":"Creative marketing and communication studio focused on content, audience strategy, paid media and analytics.",
+    "areaServed":"Worldwide"
+  }
+  </script>
 </body>
 </html>
