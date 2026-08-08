@@ -24,7 +24,7 @@
   </script>
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@700;800&display=swap');
 
     :root{
       --bg:#050706;
@@ -61,15 +61,22 @@
     }
 
     .nav{
-      height:92px;
+      height:84px;
       position:sticky;
       top:0;
       z-index:50;
       display:flex;
       align-items:center;
-      background:rgba(5,7,6,.86);
-      backdrop-filter:blur(18px);
-      border-bottom:1px solid rgba(255,255,255,.08);
+      background:rgba(5,7,6,.74);
+      backdrop-filter:blur(16px);
+      -webkit-backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(255,255,255,.07);
+      transition:height .28s ease, background .28s ease, box-shadow .28s ease;
+    }
+    .nav.scrolled{
+      height:70px;
+      background:rgba(5,7,6,.92);
+      box-shadow:0 10px 30px rgba(0,0,0,.18);
     }
 
     .nav-inner{
@@ -86,13 +93,13 @@
       display:flex;
       align-items:center;
       flex:0 0 auto;
-      width:220px;
-      height:58px;
+      width:196px;
+      height:52px;
       overflow:hidden;
     }
     .brand-logo{
       display:block;
-      width:220px;
+      width:196px;
       height:auto;
       aspect-ratio:1340 / 385;
       overflow:visible;
@@ -732,6 +739,190 @@
       *{transition:none!important}
     }
   </style>
+
+<style id="lpo-final-polish">
+.nav-actions > .btn{
+  min-height:46px;
+  padding-inline:22px;
+  transition:border-color .22s ease, background .22s ease, transform .22s ease;
+}
+.nav-actions > .btn:hover{
+  background:rgba(255,255,255,.035);
+}
+
+/* Section typography */
+.services-intro h2,
+.process-header h2,
+.collab-statement h2,
+.closing h2{
+  font-family:"Space Grotesk",Inter,sans-serif;
+}
+
+/* Hero polish */
+.hero h1 .gradient{
+  filter:drop-shadow(0 0 18px rgba(36,212,195,.08));
+  transition:filter .35s ease;
+}
+.hero:hover h1 .gradient{
+  filter:drop-shadow(0 0 24px rgba(36,212,195,.13));
+}
+
+/* Service-card microinteraction */
+.service{
+  position:relative;
+  overflow:hidden;
+}
+.service::before{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:0;
+  height:2px;
+  background:linear-gradient(90deg,var(--teal),transparent);
+  transition:width .32s ease;
+}
+.service:hover::before{width:100%}
+.service-arrow{
+  transition:transform .28s ease,color .28s ease;
+}
+.service:hover .service-arrow{
+  transform:translate(2px,-2px) rotate(8deg);
+  color:#71efe4;
+}
+
+/* Collaboration polish */
+.project{
+  transition:transform .25s ease,border-color .25s ease,background .25s ease;
+}
+.project:hover{
+  transform:translateY(-3px);
+  border-color:#3a4540;
+  background:linear-gradient(145deg,rgba(255,255,255,.025),rgba(255,255,255,.008));
+}
+
+/* Timeline reveal */
+.journey-step{
+  opacity:.52;
+  transform:translateY(8px);
+  transition:opacity .5s ease,transform .5s ease;
+}
+.journey.is-visible .journey-step{
+  opacity:1;
+  transform:none;
+}
+.journey.is-visible .journey-step:nth-child(2){transition-delay:.09s}
+.journey.is-visible .journey-step:nth-child(3){transition-delay:.18s}
+.journey.is-visible .journey-step:nth-child(4){transition-delay:.27s}
+.journey-step:not(:last-child)::after{
+  transform:scaleX(0);
+  transform-origin:left center;
+  transition:transform .7s ease;
+}
+.journey.is-visible .journey-step:not(:last-child)::after{
+  transform:scaleX(1);
+}
+.journey.is-visible .journey-step:nth-child(2)::after{transition-delay:.14s}
+.journey.is-visible .journey-step:nth-child(3)::after{transition-delay:.28s}
+
+/* MOBILE */
+@media (max-width:720px){
+  .nav{
+    height:72px;
+  }
+  .nav.scrolled{
+    height:64px;
+  }
+  .nav-inner{
+    width:calc(100% - 28px);
+  }
+  .brand{
+    width:154px !important;
+    height:42px !important;
+  }
+  .brand-logo{
+    width:154px !important;
+  }
+
+  .hero{
+    min-height:auto !important;
+    padding:18px 0 24px;
+  }
+  .hero-content{
+    width:100% !important;
+    padding:58px 0 48px !important;
+  }
+  .hero h1{
+    font-size:clamp(38px,10.4vw,52px) !important;
+    line-height:.92;
+    letter-spacing:-.06em;
+    max-width:100%;
+    overflow:visible;
+  }
+  .hero h1 > span{
+    display:block;
+    white-space:nowrap;
+    max-width:none;
+  }
+  .hero h1 .gradient{
+    width:auto !important;
+    max-width:none !important;
+  }
+  .hero-copy{
+    max-width:92%;
+    font-size:15px;
+    line-height:1.6;
+    margin-bottom:28px;
+  }
+
+  section.content-section{
+    padding:58px 0 !important;
+  }
+  .services-intro{
+    margin-bottom:30px;
+  }
+  .services-intro h2{
+    font-size:clamp(34px,10vw,46px);
+  }
+  .services-mini-grid{
+    grid-template-columns:repeat(2,max-content);
+  }
+
+  .project{
+    padding:22px !important;
+  }
+  .project-visual{
+    min-height:180px;
+  }
+
+  .process-header{
+    margin-bottom:20px;
+  }
+  .process-header h2{
+    font-size:clamp(34px,10vw,46px);
+  }
+
+  .closing{
+    padding:68px 0 64px !important;
+  }
+  .closing h2{
+    font-size:clamp(36px,10.2vw,50px);
+  }
+}
+
+@media (max-width:420px){
+  .hero h1{
+    font-size:clamp(35px,10vw,44px) !important;
+  }
+  .hero-copy{
+    max-width:100%;
+  }
+  .lang{
+    gap:8px;
+  }
+}
+</style>
+
 </head>
 
 <body>
@@ -797,15 +988,15 @@
         <div class="services-intro">
           <div class="services-intro-copy">
             <div class="eyebrow" data-en="What we do" data-es="Qué hacemos">What we do</div>
-            <h2 data-en="Connected capabilities for clearer, stronger communication."
-                data-es="Capacidades conectadas para una comunicación más clara y potente.">
-              Connected capabilities for clearer, stronger communication.
+            <h2 data-en="Everything connected. Nothing wasted."
+                data-es="Todo conectado. Nada librado al azar.">
+              Everything connected. Nothing wasted.
             </h2>
           </div>
           <div class="services-intro-side">
-            <p data-en="We combine strategy, content, media and data so every action supports the next — from the first idea to the final measurement."
-               data-es="Combinamos estrategia, contenido, medios y datos para que cada acción potencie a la siguiente: desde la primera idea hasta la medición final.">
-              We combine strategy, content, media and data so every action supports the next — from the first idea to the final measurement.
+            <p data-en="Strategy, content, media and data work as one system — so each decision makes the next one stronger."
+               data-es="Estrategia, contenido, medios y datos funcionan como un solo sistema para que cada decisión fortalezca la siguiente.">
+              Strategy, content, media and data work as one system — so each decision makes the next one stronger.
             </p>
             <div class="services-mini-grid" aria-hidden="true">
               <span>Strategy</span>
@@ -1009,9 +1200,9 @@
     <section class="closing" id="contact">
       <div class="shell">
         <div class="eyebrow" style="justify-content:center" data-en="Let's talk" data-es="Conversemos">Let's talk</div>
-        <h2 data-en="Bring us the challenge. Let’s shape the next move."
-            data-es="Traé el desafío. Pensemos el próximo movimiento.">
-          Bring us the challenge. Let’s shape the next move.
+        <h2 data-en="Let’s build what comes next."
+            data-es="Construyamos lo que sigue.">
+          Let’s build what comes next.
         </h2>
         <p data-en="Tell us what you’re trying to build, improve or understand. We’ll use the first 30 minutes to find the most useful way forward."
            data-es="Contanos qué querés construir, mejorar o entender. Usemos los primeros 30 minutos para encontrar el camino más útil.">
@@ -1325,5 +1516,49 @@
     "areaServed":"Worldwide"
   }
   </script>
+
+<script id="lpo-polish-js">
+(function(){
+  const nav = document.querySelector('.nav');
+  const canvas = document.getElementById('waveCanvas');
+  const hero = document.querySelector('.hero');
+  const journey = document.querySelector('.journey');
+
+  function updateNav(){
+    if(nav) nav.classList.toggle('scrolled', window.scrollY > 28);
+  }
+  updateNav();
+  window.addEventListener('scroll', updateNav, {passive:true});
+
+  if(hero && canvas && window.matchMedia('(pointer:fine)').matches){
+    hero.addEventListener('mousemove', (e)=>{
+      const r = hero.getBoundingClientRect();
+      const x = (e.clientX-r.left)/r.width - .5;
+      const y = (e.clientY-r.top)/r.height - .5;
+      canvas.style.transform = `translate(${x*8}px,${y*5}px) scale(1.015)`;
+    });
+    hero.addEventListener('mouseleave', ()=>{
+      canvas.style.transform = 'translate(0,0) scale(1)';
+    });
+    canvas.style.transition='transform .45s ease-out';
+  }
+
+  if(journey && 'IntersectionObserver' in window){
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          journey.classList.add('is-visible');
+          observer.disconnect();
+        }
+      });
+    },{threshold:.28});
+    observer.observe(journey);
+  } else if(journey){
+    journey.classList.add('is-visible');
+  }
+})();
+</script>
+
 </body>
 </html>
+
