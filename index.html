@@ -6,7 +6,7 @@
   <title>La Petite Orchestra | Creative Marketing, Paid Media & Audience Strategy</title>
   <meta name="description" content="La Petite Orchestra is a creative marketing and communication studio focused on content, audience strategy, paid media and actionable analytics.">
   <link rel="canonical" href="https://lapetiteorchestra.com/">
-  <link rel="icon" href="logo-lpo.svg" type="image/svg+xml">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Crect width='96' height='96' rx='10' fill='%23050706'/%3E%3Ctext x='48' y='65' text-anchor='middle' font-family='Arial,sans-serif' font-size='43' font-weight='700' letter-spacing='-3' fill='white'%3ELPO%3C/text%3E%3C/svg%3E">
   <meta name="theme-color" content="#050706">
 
   <meta property="og:type" content="website">
@@ -52,7 +52,7 @@
 
     a{color:inherit;text-decoration:none}
     button{font:inherit}
-    img{max-width:min(calc(100% - 72px),var(--max));display:block}
+    img{max-width:100%;display:block}
     [hidden]{display:none!important}
 
     .shell{
@@ -73,7 +73,8 @@
     }
 
     .nav-inner{
-      width:100%;
+      width:min(calc(100% - 80px),var(--max));
+      margin-inline:auto;
       display:flex;
       align-items:center;
       justify-content:space-between;
@@ -81,13 +82,21 @@
       padding-inline:0;
     }
 
-    .brand img{
-display:block;
-width:300px;
-height:auto;
-margin-left:-6px;
-margin-top:-2px;
-}
+    .brand{
+      display:flex;
+      align-items:center;
+      flex:0 0 auto;
+      width:220px;
+      height:58px;
+      overflow:hidden;
+    }
+    .brand-logo{
+      display:block;
+      width:220px;
+      height:auto;
+      aspect-ratio:1340 / 385;
+      overflow:visible;
+    }
 
     .nav-actions{display:flex;align-items:center;gap:26px}
     .lang{
@@ -503,39 +512,31 @@ margin-top:-2px;
       max-width:560px;
       justify-self:end;
     }
-
     .journey{
-      position:relative;
       display:grid;
       grid-template-columns:repeat(4,minmax(0,1fr));
-      gap:0;
       margin-top:12px;
       padding-top:30px;
     }
-
-    .journey::before{
-      content:"";
-      position:absolute;
-      left:20px;
-      right:20px;
-      top:49px;
-      height:2px;
-      background:linear-gradient(90deg,var(--orange),#d8b84c 34%,#75bb82 67%,var(--teal));
-      opacity:.9;
-      z-index:0;
-    }
-
     .journey-step{
       position:relative;
       min-width:0;
-      padding-right:24px;
+      padding-right:42px;
       color:var(--text);
-      z-index:1;
     }
-    .journey-step + .journey-step{
-      padding-left:24px;
+    .journey-step:not(:last-child)::after{
+      content:"";
+      position:absolute;
+      z-index:0;
+      top:19px;
+      left:40px;
+      right:0;
+      height:2px;
+      opacity:.95;
     }
-
+    .step-1::after{background:linear-gradient(90deg,var(--orange),#d8b84c)}
+    .step-2::after{background:linear-gradient(90deg,#d8b84c,#75bb82)}
+    .step-3::after{background:linear-gradient(90deg,#75bb82,var(--teal))}
     .journey-node{
       position:relative;
       z-index:2;
@@ -546,27 +547,24 @@ margin-top:-2px;
       place-items:center;
       background:var(--bg);
       border:2px solid currentColor;
-      box-shadow:0 0 0 7px rgba(5,7,6,1);
-      margin:0 0 22px;
+      box-shadow:0 0 0 7px var(--bg);
+      margin:0 0 22px 0;
       font-size:11px;
       font-weight:800;
       letter-spacing:.08em;
     }
-
     .step-1{color:var(--orange)}
     .step-2{color:#d8b84c}
     .step-3{color:#75bb82}
     .step-4{color:var(--teal)}
-
     .journey-step h3{
       color:var(--text);
       font-size:27px;
       line-height:1.1;
       font-weight:600;
       letter-spacing:-.035em;
-      margin-bottom:10px;
+      margin:0 0 10px 0;
     }
-
     .journey-step p{
       color:var(--muted);
       font-size:14px;
@@ -574,12 +572,6 @@ margin-top:-2px;
       margin:0;
       max-width:250px;
     }
-
-
-    .journey-step:first-child .journey-node{margin-left:0}
-    .journey-step:nth-child(2) .journey-node{margin-left:calc(33.333% - 20px)}
-    .journey-step:nth-child(3) .journey-node{margin-left:calc(66.666% - 20px)}
-    .journey-step:last-child .journey-node{margin-left:auto;margin-right:0}
 
     /* CTA */
     .closing{
@@ -660,7 +652,7 @@ margin-top:-2px;
 
     @media (max-width:980px){
       .shell{width:min(calc(100% - 40px),var(--max))}
-      .brand img{width:330px;height:66px}
+      .brand{width:195px;height:52px}.brand-logo{width:195px}
       .hero{min-height:600px}
       .hero-content{width:82vw}
       .section-head,.collab-intro,.process-header,.services-intro{grid-template-columns:1fr}
@@ -675,7 +667,8 @@ margin-top:-2px;
 
     @media (max-width:720px){
       .nav{height:78px}
-      .brand img{width:245px;height:54px}
+      .nav-inner{width:calc(100% - 32px)}
+      .brand{width:172px;height:46px}.brand-logo{width:172px}
       .nav-actions{gap:14px}
       .nav .btn{display:none}
       .hero{min-height:600px}
@@ -700,21 +693,18 @@ margin-top:-2px;
       .journey{
         display:grid;
         grid-template-columns:1fr;
-        gap:0;
         margin-top:28px;
         padding:0 0 0 28px;
       }
-      .journey::before{
-        left:18px;
-        right:auto;
-        top:20px;
-        bottom:20px;
-        width:2px;
-        height:auto;
-      }
-      .journey-step,
-      .journey-step + .journey-step{
+      .journey-step{
         padding:0 0 34px 24px;
+      }
+      .journey-step:not(:last-child)::after{
+        top:36px;
+        left:-10px;
+        right:auto;
+        width:2px;
+        height:calc(100% - 12px);
       }
       .journey-node{
         position:absolute;
@@ -722,8 +712,8 @@ margin-top:-2px;
         top:0;
         width:36px;
         height:36px;
-        margin:0 !important;
-        box-shadow:0 0 0 6px rgba(5,7,6,1);
+        margin:0;
+        box-shadow:0 0 0 6px var(--bg);
       }
       .journey-step h3{padding-top:3px}
       .process-grid{grid-template-columns:1fr}
@@ -748,7 +738,9 @@ margin-top:-2px;
   <nav class="nav">
     <div class="shell nav-inner">
       <a class="brand focus" href="#" aria-label="La Petite Orchestra home">
-        <img src="logo-lpo.svg" alt="La Petite Orchestra">
+        <svg class="brand-logo" viewBox="110 540 1340 385" role="img" aria-label="La Petite Orchestra">
+          <image href="logo-lpo.svg" x="0" y="0" width="1500" height="1500" preserveAspectRatio="xMidYMid meet"></image>
+        </svg>
       </a>
 
       <div class="nav-actions">
